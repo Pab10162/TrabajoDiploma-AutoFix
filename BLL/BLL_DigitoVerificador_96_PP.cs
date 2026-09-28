@@ -94,7 +94,7 @@ namespace BLL
 
             foreach (var dv in listaDV)
             {
-                DataTable registros = DAL_Comun_96_PP.DAL_Comun_96_PP.ConsultarTabla(dv.tabla);
+                DataTable registros = DAL_Comun_96_PP.ConsultarTabla(dv.tabla);
 
 
                 long nuevoDVV = CalcularDVV(registros);
