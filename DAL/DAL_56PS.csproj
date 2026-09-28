@@ -51,6 +51,9 @@
     <Compile Include="DAL_Idioma_56PS.cs" />
     <Compile Include="DAL_Rol_56PS.cs" />
     <Compile Include="DAL_Usuario_56PS.cs" />
+    <Compile Include="DAL_Cliente_56PS.cs" />
+    <Compile Include="DAL_Turno_56PS.cs" />
+    <Compile Include="DAL_Vehiculo_56PS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

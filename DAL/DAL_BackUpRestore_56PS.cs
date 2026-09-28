@@ -117,6 +117,18 @@ namespace DAL
                 scriptEjecutado = true;
             }
 
+            // RFN1 - Tablas del taller (Cliente, Vehiculo, Turno).
+            // Se crean con un script aparte para no tocar el Script_Create del SistemaBase.
+            if (!ExisteTabla("Turno_56PS"))
+            {
+                string rutaScriptTaller = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Script_TallerMecanico.sql");
+                if (File.Exists(rutaScriptTaller))
+                {
+                    DAL_625NS.DAL_56PS.EjecutarScript(rutaScriptTaller);
+                    scriptEjecutado = true;
+                }
+            }
+
             if (primeraEjecucionInstalador)
             {
                 File.Delete(rutaPrimeraVez);
@@ -152,6 +164,20 @@ namespace DAL
 
                 using (SqlCommand cmd = new SqlCommand("SELECT OBJECT_ID(N'dbo.Usuario_56PS', N'U')", conn))
                 {
+                    object result = cmd.ExecuteScalar();
+                    return result != DBNull.Value && result != null;
+                }
+            }
+        }
+
+        private bool ExisteTabla(string nombreTabla)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT OBJECT_ID(@tabla, N'U')", conn))
+                {
+                    cmd.Parameters.AddWithValue("@tabla", "dbo." + nombreTabla);
                     object result = cmd.ExecuteScalar();
                     return result != DBNull.Value && result != null;
                 }

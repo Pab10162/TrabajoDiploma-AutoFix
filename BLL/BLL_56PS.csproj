@@ -60,6 +60,11 @@
     <Compile Include="BLL_Patente_56PS.cs" />
     <Compile Include="BLL_Rol_56PS.cs" />
     <Compile Include="BLL_Usuario_56PS.cs" />
+    <Compile Include="BLL_Cliente_56PS.cs" />
+    <Compile Include="BLL_ReporteTurnos_56PS.cs" />
+    <Compile Include="BLL_Taller_Comun_56PS.cs" />
+    <Compile Include="BLL_Turno_56PS.cs" />
+    <Compile Include="BLL_Vehiculo_56PS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

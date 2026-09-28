@@ -44,6 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE_Cliente_56PS.cs" />
+    <Compile Include="BE_ReporteTurnos_56PS.cs" />
+    <Compile Include="BE_Turno_56PS.cs" />
+    <Compile Include="BE_Vehiculo_56PS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

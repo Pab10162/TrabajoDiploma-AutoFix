@@ -40,6 +40,13 @@
             this.familiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDeRespaldoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maestrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +54,10 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.administracionToolStripMenuItem,
-            this.administracionToolStripMenuItem1});
+            this.administracionToolStripMenuItem1,
+            this.maestrosToolStripMenuItem,
+            this.turnosToolStripMenuItem,
+            this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -153,6 +163,66 @@
             this.cambiarIdiomaToolStripMenuItem.Text = "Cambiar idioma";
             this.cambiarIdiomaToolStripMenuItem.Click += new System.EventHandler(this.cambiarIdiomaToolStripMenuItem_Click);
             // 
+            // maestrosToolStripMenuItem
+            // 
+            this.maestrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clientesToolStripMenuItem,
+            this.vehiculosToolStripMenuItem});
+            this.maestrosToolStripMenuItem.Name = "maestrosToolStripMenuItem";
+            this.maestrosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.maestrosToolStripMenuItem.Tag = "maestrosMenu";
+            this.maestrosToolStripMenuItem.Text = "Maestros";
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Tag = "clientesTitle";
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // vehiculosToolStripMenuItem
+            // 
+            this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.vehiculosToolStripMenuItem.Tag = "vehiculosTitle";
+            this.vehiculosToolStripMenuItem.Text = "Vehículos";
+            this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
+            // 
+            // turnosToolStripMenuItem
+            // 
+            this.turnosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.asignarTurnoToolStripMenuItem});
+            this.turnosToolStripMenuItem.Name = "turnosToolStripMenuItem";
+            this.turnosToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.turnosToolStripMenuItem.Tag = "turnosMenu";
+            this.turnosToolStripMenuItem.Text = "Turnos";
+            // 
+            // asignarTurnoToolStripMenuItem
+            // 
+            this.asignarTurnoToolStripMenuItem.Name = "asignarTurnoToolStripMenuItem";
+            this.asignarTurnoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.asignarTurnoToolStripMenuItem.Tag = "asignarTurnoMenu";
+            this.asignarTurnoToolStripMenuItem.Text = "Asignar turno";
+            this.asignarTurnoToolStripMenuItem.Click += new System.EventHandler(this.asignarTurnoToolStripMenuItem_Click);
+            // 
+            // reportesToolStripMenuItem
+            // 
+            this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reporteTurnosToolStripMenuItem});
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.reportesToolStripMenuItem.Tag = "reportesMenu";
+            this.reportesToolStripMenuItem.Text = "Reportes";
+            // 
+            // reporteTurnosToolStripMenuItem
+            // 
+            this.reporteTurnosToolStripMenuItem.Name = "reporteTurnosToolStripMenuItem";
+            this.reporteTurnosToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.reporteTurnosToolStripMenuItem.Tag = "reporteTurnosMenu";
+            this.reporteTurnosToolStripMenuItem.Text = "Rep. 1 (RFN1) - Turnos";
+            this.reporteTurnosToolStripMenuItem.Click += new System.EventHandler(this.reporteTurnosToolStripMenuItem_Click);
+            // 
             // MenuPrincipal_56PS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,5 +255,12 @@
         private System.Windows.Forms.ToolStripMenuItem familiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestionDeRespaldoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cambiarIdiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maestrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vehiculosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem turnosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asignarTurnoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteTurnosToolStripMenuItem;
     }
 }

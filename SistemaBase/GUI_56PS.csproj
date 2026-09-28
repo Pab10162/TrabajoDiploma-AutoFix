@@ -94,6 +94,30 @@
     <Compile Include="Administracion\FormReparacion_56PS.Designer.cs">
       <DependentUpon>FormReparacion_56PS.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maestros\FormClientes_56PS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestros\FormClientes_56PS.Designer.cs">
+      <DependentUpon>FormClientes_56PS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maestros\FormVehiculos_56PS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestros\FormVehiculos_56PS.Designer.cs">
+      <DependentUpon>FormVehiculos_56PS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Turnos\FormTurnos_56PS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Turnos\FormTurnos_56PS.Designer.cs">
+      <DependentUpon>FormTurnos_56PS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\FormReporteTurnos_56PS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\FormReporteTurnos_56PS.Designer.cs">
+      <DependentUpon>FormReporteTurnos_56PS.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal_56PS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +164,18 @@
     <EmbeddedResource Include="Administracion\FormReparacion_56PS.resx">
       <DependentUpon>FormReparacion_56PS.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Maestros\FormClientes_56PS.resx">
+      <DependentUpon>FormClientes_56PS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestros\FormVehiculos_56PS.resx">
+      <DependentUpon>FormVehiculos_56PS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Turnos\FormTurnos_56PS.resx">
+      <DependentUpon>FormTurnos_56PS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\FormReporteTurnos_56PS.resx">
+      <DependentUpon>FormReporteTurnos_56PS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal_56PS.resx">
       <DependentUpon>MenuPrincipal_56PS.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +214,15 @@
     <None Include="ES.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Script_Create.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Script_Alter.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Script_TallerMecanico.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="pt.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

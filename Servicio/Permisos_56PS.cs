@@ -32,6 +32,27 @@ namespace Servicio
         public const string RestaurarBackup = "P51";
         public const string RecalcularDigitosVerificadores = "P52";
 
+        // RFN1 - Asignar turno de reparación
+        public const string GestionarClientes = "P60";
+        public const string GestionarVehiculos = "P61";
+        public const string AsignarTurno = "P62";
+        public const string ConsultarTurnos = "P63";
+
+        // A02 - Reporte del RFN1
+        public const string ReporteTurnos = "P64";
+
+        public static readonly string[] Maestros =
+        {
+            GestionarClientes,
+            GestionarVehiculos
+        };
+
+        public static readonly string[] Turnos =
+        {
+            AsignarTurno,
+            ConsultarTurnos
+        };
+
         public static readonly string[] Usuarios =
         {
             ConsultarUsuarios,

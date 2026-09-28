@@ -5,6 +5,9 @@ using ClassLibrary3;
 using GUI_625NS.Administracion;
 using SistemaBase.Administracion;
 using SistemaBase.Usuario;
+using SistemaBase.Maestros;
+using SistemaBase.Turnos;
+using SistemaBase.Reportes;
 using Servicio;
 using System;
 using System.Collections.Generic;
@@ -135,6 +138,15 @@ namespace SistemaBase
             MenuFamilias.Enabled = false;
             MenuGestionRespaldo.Enabled = false;
             administracionToolStripMenuItem1.Enabled = false;
+
+            // RFN1
+            maestrosToolStripMenuItem.Enabled = false;
+            clientesToolStripMenuItem.Enabled = false;
+            vehiculosToolStripMenuItem.Enabled = false;
+            turnosToolStripMenuItem.Enabled = false;
+            asignarTurnoToolStripMenuItem.Enabled = false;
+            reportesToolStripMenuItem.Enabled = false;
+            reporteTurnosToolStripMenuItem.Enabled = false;
         }
 
         public void AplicarEstadoSesion(Rol_56PS rol)
@@ -149,6 +161,17 @@ namespace SistemaBase
             MenuCambiarIdioma.Enabled = TienePermiso(rol, Permisos_56PS.CambiarIdioma);
             MenuGestionRespaldo.Enabled = TieneAlgunPermiso(rol, Permisos_56PS.RealizarBackup, Permisos_56PS.RestaurarBackup);
             administracionToolStripMenuItem1.Enabled = TieneAlgunPermiso(rol, Permisos_56PS.Administracion);
+
+            // RFN1 - Asignar turno de reparación
+            clientesToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_56PS.GestionarClientes);
+            vehiculosToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_56PS.GestionarVehiculos);
+            maestrosToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_56PS.Maestros);
+            asignarTurnoToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_56PS.Turnos);
+            turnosToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_56PS.Turnos);
+
+            // A02 - Reporte del RFN1
+            reporteTurnosToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_56PS.ReporteTurnos);
+            reportesToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_56PS.ReporteTurnos);
         }
 
         private bool TienePermiso(Rol_56PS rol, string permiso)
@@ -226,6 +249,28 @@ namespace SistemaBase
         private void gestionDeRespaldoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new FormGestionBackUpRestore_56PS());
+        }
+
+        // ---------- RFN1 ----------
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormClientes_56PS());
+        }
+
+        private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormVehiculos_56PS());
+        }
+
+        private void asignarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormTurnos_56PS());
+        }
+
+        private void reporteTurnosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormReporteTurnos_56PS());
         }
 
         private void CierreSistemaSolicitado(object sender, EventArgs e)

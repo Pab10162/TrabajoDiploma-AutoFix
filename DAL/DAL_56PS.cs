@@ -21,7 +21,12 @@ namespace DAL_625NS
             { "Roles", "CodigoRol" },
             { "RolFamilia", "CodigoRol, CodigoFamilia" },
             { "RolPatente", "CodigoRol, CodigoPatente" },
-            { "Usuario_56PS", "DNI" }
+            { "Usuario_56PS", "DNI" },
+
+            // RFN1 - Taller mecánico
+            { "Cliente_56PS", "DNI" },
+            { "Vehiculo_56PS", "Patente" },
+            { "Turno_56PS", "IdTurno" }
         };
 
 
