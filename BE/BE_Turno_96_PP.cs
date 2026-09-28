@@ -31,10 +31,8 @@ namespace BE_96_PP
         public BE_Cliente_96_PP Cliente { get; set; }
         public BE_Vehiculo_96_PP Vehiculo { get; set; }
 
-        // DNI del usuario con rol Mecánico. 
         public string DniMecanico { get; set; }
 
-        // Propiedades de solo lectura para las grillas.
         public string DniCliente => Cliente?.Dni;
         public string NombreCliente => Cliente == null ? null : $"{Cliente.Apellido}, {Cliente.Nombre}";
         public string PatenteVehiculo => Vehiculo?.Patente;
@@ -45,7 +43,6 @@ namespace BE_96_PP
             Estado = EstadoTurno.Pendiente;
         }
 
-        // Constructor para un turno nuevo 
         public BE_Turno_96_PP(DateTime fecha, TimeSpan horario, BE_Cliente_96_PP cliente, BE_Vehiculo_96_PP vehiculo)
         {
             Fecha = fecha.Date;
@@ -56,7 +53,6 @@ namespace BE_96_PP
             DniMecanico = null;
         }
 
-        // Constructor completo 
         public BE_Turno_96_PP(int idTurno, DateTime fecha, TimeSpan horario, EstadoTurno estado,
                              BE_Cliente_96_PP cliente, BE_Vehiculo_96_PP vehiculo, string dniMecanico)
         {

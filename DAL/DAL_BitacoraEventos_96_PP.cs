@@ -23,14 +23,14 @@ namespace DAL_96_PP
                 new SqlParameter("@criticidad", e.criticidad.ToString())
             };
 
-            DAL_96_PP.ExecuteNonQuery(query, parametros);
+            DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
         }
 
         public List<Evento_96_PP> obtenerEventos()
         {
             string query = "SELECT numero, dni, fecha, modulo, descripcion, criticidad FROM Evento_56PS ORDER BY fecha DESC";
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, null);
 
             List<Evento_96_PP> lista = new List<Evento_96_PP>();
 

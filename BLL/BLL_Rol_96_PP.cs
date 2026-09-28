@@ -51,9 +51,9 @@ namespace BLL
             new BLL_BitacoraEvento_96_PP().RegistrarEvento(evento);
 
             BLL_DigitoVerificador_96_PP dv = new BLL_DigitoVerificador_96_PP();
-            dv.CalcularDV("Roles", DAL_96_PP.ConsultarTabla("Roles"));
-            dv.CalcularDV("RolPatente", DAL_96_PP.ConsultarTabla("RolPatente"));
-            dv.CalcularDV("RolFamilia", DAL_96_PP.ConsultarTabla("RolFamilia"));
+            dv.CalcularDV("Roles", DAL_Comun_96_PP.ConsultarTabla("Roles"));
+            dv.CalcularDV("RolPatente", DAL_Comun_96_PP.ConsultarTabla("RolPatente"));
+            dv.CalcularDV("RolFamilia", DAL_Comun_96_PP.ConsultarTabla("RolFamilia"));
         }
 
         private List<Rol_96_PP> ValidarElementosIniciales(IEnumerable<Rol_96_PP> elementos)
@@ -105,8 +105,8 @@ namespace BLL
             dalrol.EliminarPermisodeRol(p, codrol);
 
             var dv = new BLL_DigitoVerificador_96_PP();
-            dv.CalcularDV("RolPatente", DAL_96_PP.ConsultarTabla("RolPatente"));
-            dv.CalcularDV("RolFamilia", DAL_96_PP.ConsultarTabla("RolFamilia"));
+            dv.CalcularDV("RolPatente", DAL_Comun_96_PP.ConsultarTabla("RolPatente"));
+            dv.CalcularDV("RolFamilia", DAL_Comun_96_PP.ConsultarTabla("RolFamilia"));
         }
 
         public string ObtenerCodigoRol(Rol_96_PP p)
@@ -124,7 +124,7 @@ namespace BLL
                     {
                         rol.activo = false;
                         dalrol.EliminarRol(rol);
-                        new BLL_DigitoVerificador_96_PP().CalcularDV("Roles", DAL_96_PP.ConsultarTabla("Roles"));
+                        new BLL_DigitoVerificador_96_PP().CalcularDV("Roles", DAL_Comun_96_PP.ConsultarTabla("Roles"));
 
                         var user = SessionManager_96_PP.getInstancia().getUsuarioActivo();
                         Evento_96_PP evento = new Evento_96_PP(
@@ -180,8 +180,8 @@ namespace BLL
             );
             new BLL_BitacoraEvento_96_PP().RegistrarEvento(evento);
             var dv = new BLL_DigitoVerificador_96_PP();
-            dv.CalcularDV("RolPatente", DAL_96_PP.ConsultarTabla("RolPatente"));
-            dv.CalcularDV("RolFamilia", DAL_96_PP.ConsultarTabla("RolFamilia"));
+            dv.CalcularDV("RolPatente", DAL_Comun_96_PP.ConsultarTabla("RolPatente"));
+            dv.CalcularDV("RolFamilia", DAL_Comun_96_PP.ConsultarTabla("RolFamilia"));
         }
 
         public List<Rol_96_PP> ObtenerTodosLosRoles()

@@ -15,7 +15,7 @@ namespace DAL
         public List<DigitoVerificador_96_PP> ConsultarDV()
         {
             string query = "SELECT nombreTabla, DVH, DVV FROM DigitoVerificador";
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, null);
 
             List<DigitoVerificador_96_PP> lista = new List<DigitoVerificador_96_PP>();
 
@@ -37,7 +37,7 @@ namespace DAL
         {
              string queryExiste = "SELECT COUNT(*) FROM DigitoVerificador WHERE nombreTabla = @nombreTabla";
             SqlParameter[] paramExiste = { new SqlParameter("@nombreTabla", dv.tabla) };
-            int existe = Convert.ToInt32(DAL_96_PP.ExecuteScalar(queryExiste, paramExiste));
+            int existe = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(queryExiste, paramExiste));
 
              string query = existe > 0
                 ? "UPDATE DigitoVerificador SET DVH = @DVH, DVV = @DVV WHERE nombreTabla = @nombreTabla"
@@ -50,7 +50,7 @@ namespace DAL
                 new SqlParameter("@DVV", (object)dv.DVV ?? DBNull.Value)
             };
 
-            DAL_96_PP.ExecuteNonQuery(query, parametros);
+            DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
         }
     }
 }

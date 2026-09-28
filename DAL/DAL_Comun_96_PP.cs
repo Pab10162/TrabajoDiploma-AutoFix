@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace DAL_96_PP
 {
-    public static class DAL_96_PP
+    public static class DAL_Comun_96_PP
     {
         private static string dbname = "SistemaBase";
         private static readonly Dictionary<string, string> ordenTablas = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)

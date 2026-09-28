@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 namespace BE_96_PP
 {
-    // A02 - Reporte asociado al RFN1: "Reporte de Turnos de Reparación".
-    // Una fila del reporte: datos planos (texto) listos para mostrar en la grilla y en el PDF.
     public class BE_FilaReporteTurno_96_PP
     {
         public int IdTurno { get; set; }
@@ -20,30 +18,28 @@ namespace BE_96_PP
         public string Mecanico { get; set; }
     }
 
-    // El reporte completo: el período pedido, las filas y los indicadores calculados por la BLL.
     public class BE_ReporteTurnos_96_PP
     {
         public DateTime Desde { get; set; }
         public DateTime Hasta { get; set; }
-        public string EstadoFiltro { get; set; }        // null = todos
+        public string EstadoFiltro { get; set; }        
         public DateTime FechaGeneracion { get; set; }
         public string GeneradoPor { get; set; }
 
         public List<BE_FilaReporteTurno_96_PP> Filas { get; set; } = new List<BE_FilaReporteTurno_96_PP>();
 
-        // Indicadores (se calculan sobre TODOS los turnos del período, sin importar el filtro de estado)
         public int TotalTurnos { get; set; }
         public int Pendientes { get; set; }
         public int Confirmados { get; set; }
         public int Atendidos { get; set; }
         public int Cancelados { get; set; }
 
-        public int HorariosDelPeriodo { get; set; }     // capacidad: días x horarios por día
-        public int HorariosOcupados { get; set; }       // turnos no cancelados
+        public int HorariosDelPeriodo { get; set; }     
+        public int HorariosOcupados { get; set; }       
         public decimal PorcentajeOcupacion { get; set; }
         public decimal PorcentajeCancelacion { get; set; }
 
-        public string DiaMasDemandado { get; set; }     // día de la semana con más turnos
-        public string HorarioMasDemandado { get; set; } // franja horaria con más turnos
+        public string DiaMasDemandado { get; set; }    
+        public string HorarioMasDemandado { get; set; } 
     }
 }

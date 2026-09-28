@@ -20,7 +20,7 @@ namespace DAL_96_PP
                 new SqlParameter("@nom", f.Nombre)
             };
 
-            DAL_96_PP.ExecuteNonQuery(query, parametros);
+            DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
         }
 
         public string ObtenerNombredeRol(string codigo)
@@ -28,7 +28,7 @@ namespace DAL_96_PP
             string query = "SELECT Nombre FROM Roles WHERE CodigoRol = @c";
             SqlParameter[] parametros = { new SqlParameter("@c", codigo) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             if (ds.Tables[0].Rows.Count == 0)
                 return null;
@@ -49,7 +49,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codfamilia", permiso.Codigo)
                 };
 
-                rowsaf = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                rowsaf = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codpatente", permiso.Codigo)
                 };
 
-                rowsaf = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                rowsaf = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
 
             if (rowsaf <= 0)
@@ -82,7 +82,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codhija", permiso.Codigo)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
             else
             {
@@ -93,7 +93,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codpat", permiso.Codigo)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
 
             if (filasAfectadas != 1)
@@ -104,7 +104,7 @@ namespace DAL_96_PP
         {
             string query = "SELECT * FROM Patentes";
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, null);
 
             List<Patente_96_PP> patentes = new List<Patente_96_PP>();
 
@@ -123,7 +123,7 @@ namespace DAL_96_PP
         {
             string query = "SELECT COUNT(*) FROM Usuario_56PS WHERE Rol = @cod";
             SqlParameter[] parametros = { new SqlParameter("@cod", p.Codigo) };
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -135,7 +135,7 @@ namespace DAL_96_PP
                 (SELECT COUNT(*) FROM FamiliaFamilia WHERE CodigoFamilia = @cod OR CodFamiliaHija = @cod)";
             SqlParameter[] parametros = { new SqlParameter("@cod", f.Codigo) };
 
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -143,7 +143,7 @@ namespace DAL_96_PP
         {
             string query = "SELECT COUNT(*) FROM Familias WHERE CodigoFamilia = @cod AND Activa = 1";
             SqlParameter[] parametros = { new SqlParameter("@cod", codigo) };
-            return Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros)) > 0;
+            return Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros)) > 0;
         }
 
         public bool FamiliaContiene(string codigoFamilia, string codigoBuscado)
@@ -170,14 +170,14 @@ namespace DAL_96_PP
                 new SqlParameter("@destino", codigoBuscado)
             };
 
-            return Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros)) > 0;
+            return Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros)) > 0;
         }
 
         public List<Rol_96_PP> ObtenerTodosLosRoles()
         {
             string query = "SELECT * FROM Roles WHERE Activo = 1";
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, null);
 
             List<Rol_96_PP> roles = new List<Rol_96_PP>();
 
@@ -203,7 +203,7 @@ namespace DAL_96_PP
                 new SqlParameter("@cod", f.Codigo)
             };
 
-            int rowsaf = DAL_96_PP.ExecuteNonQuery(query, parametros);
+            int rowsaf = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
 
             if (rowsaf <= 0)
             {
@@ -220,7 +220,7 @@ namespace DAL_96_PP
                 new SqlParameter("@cod", rol.Codigo)
             };
 
-            int rowsaf = DAL_96_PP.ExecuteNonQuery(query, parametros);
+            int rowsaf = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
 
             if (rowsaf <= 0)
             {
@@ -232,7 +232,7 @@ namespace DAL_96_PP
         {
             string query = "SELECT * FROM Familias WHERE Activa=1";
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, null);
 
             List<Familia_96_PP> familias = new List<Familia_96_PP>();
 
@@ -254,7 +254,7 @@ namespace DAL_96_PP
             string query = "SELECT COUNT(*) FROM Roles WHERE CodigoRol = @cod";
             SqlParameter[] parametros = { new SqlParameter("@cod", p.Codigo) };
 
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -263,7 +263,7 @@ namespace DAL_96_PP
             string query = "SELECT COUNT(*) FROM Roles WHERE Nombre = @nom";
             SqlParameter[] parametros = { new SqlParameter("@nom", p.Nombre) };
 
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -272,7 +272,7 @@ namespace DAL_96_PP
             string query = "SELECT COUNT(*) FROM Familias WHERE CodigoFamilia = @cod";
             SqlParameter[] parametros = { new SqlParameter("@cod", f.Codigo) };
 
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -284,7 +284,7 @@ namespace DAL_96_PP
                 new SqlParameter("@cod", f.Codigo)
             };
 
-            int resultado = Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            int resultado = Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
             return resultado > 0;
         }
 
@@ -293,7 +293,7 @@ namespace DAL_96_PP
             string query = "SELECT Nombre, CodigoPatente FROM Patentes WHERE Nombre = @nom";
             SqlParameter[] parametros = { new SqlParameter("@nom", nombre) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             Rol_96_PP permiso = new Rol_96_PP();
 
@@ -320,7 +320,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codperf", codrol)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
             else
             {
@@ -331,7 +331,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codperf", codrol)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
 
             if (filasAfectadas != 1)
@@ -351,7 +351,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codfam", codrol)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
             else
             {
@@ -362,7 +362,7 @@ namespace DAL_96_PP
                     new SqlParameter("@codfam", codrol)
                 };
 
-                filasAfectadas = DAL_96_PP.ExecuteNonQuery(query, parametros);
+                filasAfectadas = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
             }
 
             if (filasAfectadas != 1)
@@ -374,7 +374,7 @@ namespace DAL_96_PP
             string query = "SELECT CodigoRol FROM Roles WHERE Nombre = @nom";
             SqlParameter[] parametros = { new SqlParameter("@nom", p.Nombre) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             if (ds.Tables[0].Rows.Count == 0)
                 return null;
@@ -392,7 +392,7 @@ namespace DAL_96_PP
                 new SqlParameter("@act", fam.activo)
             };
 
-            int rowsaf = DAL_96_PP.ExecuteNonQuery(query, parametros);
+            int rowsaf = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
 
             if (rowsaf <= 0)
             {
@@ -412,7 +412,7 @@ namespace DAL_96_PP
                 new SqlParameter("@act", rol.activo)
             };
 
-            int rowsaff = DAL_96_PP.ExecuteNonQuery(query, parametros);
+            int rowsaff = DAL_Comun_96_PP.ExecuteNonQuery(query, parametros);
 
             if (rowsaff <= 0)
             {
@@ -422,7 +422,7 @@ namespace DAL_96_PP
 
         public void CrearFamiliaConElementos(Familia_96_PP familia, IEnumerable<Rol_96_PP> elementos)
         {
-            using (SqlConnection conexion = new SqlConnection(DAL_96_PP.obtenerConexion()))
+            using (SqlConnection conexion = new SqlConnection(DAL_Comun_96_PP.obtenerConexion()))
             {
                 conexion.Open();
                 using (SqlTransaction transaccion = conexion.BeginTransaction())
@@ -466,7 +466,7 @@ namespace DAL_96_PP
 
         public void CrearRolConElementos(Rol_96_PP rol, IEnumerable<Rol_96_PP> elementos)
         {
-            using (SqlConnection conexion = new SqlConnection(DAL_96_PP.obtenerConexion()))
+            using (SqlConnection conexion = new SqlConnection(DAL_Comun_96_PP.obtenerConexion()))
             {
                 conexion.Open();
                 using (SqlTransaction transaccion = conexion.BeginTransaction())
@@ -513,7 +513,7 @@ namespace DAL_96_PP
             string queryNom = "SELECT Nombre FROM Roles WHERE CodigoRol = @cod AND Activo = 1";
             SqlParameter[] paramNom = { new SqlParameter("@cod", codigo) };
 
-            object result = DAL_96_PP.ExecuteScalar(queryNom, paramNom);
+            object result = DAL_Comun_96_PP.ExecuteScalar(queryNom, paramNom);
             if (result == null)
                 throw new Exception("El rol no existe o se encuentra inactivo.");
 
@@ -531,7 +531,7 @@ namespace DAL_96_PP
                 "WHERE pf.CodigoRol = @cod AND f.Activa = 1";
             SqlParameter[] paramFam = { new SqlParameter("@cod", codigo) };
 
-            DataSet dsFam = DAL_96_PP.ExecuteDataSet(queryFam, paramFam);
+            DataSet dsFam = DAL_Comun_96_PP.ExecuteDataSet(queryFam, paramFam);
 
             List<Familia_96_PP> familias = new List<Familia_96_PP>();
             foreach (DataRow row in dsFam.Tables[0].Rows)
@@ -556,7 +556,7 @@ namespace DAL_96_PP
                 "WHERE pp.CodigoRol = @cod";
             SqlParameter[] paramPat = { new SqlParameter("@cod", codigo) };
 
-            DataSet dsPat = DAL_96_PP.ExecuteDataSet(queryPat, paramPat);
+            DataSet dsPat = DAL_Comun_96_PP.ExecuteDataSet(queryPat, paramPat);
 
             foreach (DataRow row in dsPat.Tables[0].Rows)
             {
@@ -577,7 +577,7 @@ namespace DAL_96_PP
             string query = "SELECT * FROM Familias WHERE CodigoFamilia = @cod AND Activa = 1";
             SqlParameter[] parametros = { new SqlParameter("@cod", codigo) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             if (ds.Tables[0].Rows.Count == 0)
             {
@@ -606,7 +606,7 @@ namespace DAL_96_PP
                 "WHERE ff.CodigoFamilia = @cod AND f.Activa = 1";
             SqlParameter[] paramHijas = { new SqlParameter("@cod", familia.Codigo) };
 
-            DataSet dsHijas = DAL_96_PP.ExecuteDataSet(queryHijas, paramHijas);
+            DataSet dsHijas = DAL_Comun_96_PP.ExecuteDataSet(queryHijas, paramHijas);
 
             List<Familia_96_PP> familiasHijas = new List<Familia_96_PP>();
             foreach (DataRow row in dsHijas.Tables[0].Rows)
@@ -633,7 +633,7 @@ namespace DAL_96_PP
                 "WHERE fp.CodigoFamilia = @cod";
             SqlParameter[] paramPats = { new SqlParameter("@cod", familia.Codigo) };
 
-            DataSet dsPats = DAL_96_PP.ExecuteDataSet(queryPats, paramPats);
+            DataSet dsPats = DAL_Comun_96_PP.ExecuteDataSet(queryPats, paramPats);
 
             foreach (DataRow row in dsPats.Tables[0].Rows)
             {
@@ -650,7 +650,7 @@ namespace DAL_96_PP
             string query = "SELECT Activa FROM Familias WHERE CodigoFamilia = @cod";
             SqlParameter[] parametros = { new SqlParameter("@cod", f.Codigo) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             if (ds.Tables[0].Rows.Count > 0)
             {
@@ -665,7 +665,7 @@ namespace DAL_96_PP
             string query = "SELECT Activo FROM Roles WHERE CodigoRol = @cod";
             SqlParameter[] parametros = { new SqlParameter("@cod", p.Codigo) };
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
 
             if (ds.Tables[0].Rows.Count > 0)
             {

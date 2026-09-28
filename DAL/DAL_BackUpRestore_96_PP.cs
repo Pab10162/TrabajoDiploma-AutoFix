@@ -12,9 +12,9 @@ namespace DAL
 {
     public class DAL_BackUpRestore_96_PP
     {
-        private string dbname = DAL_96_PP.DAL_96_PP.obtenerdbName();
-        private string connectionString => DAL_96_PP.DAL_96_PP.obtenerConexion();
-        private string masterConnectionString => DAL_96_PP.DAL_96_PP.obtenerConexionMaster();
+        private string dbname = DAL_Comun_96_PP.DAL_Comun_96_PP.obtenerdbName();
+        private string connectionString => DAL_Comun_96_PP.DAL_Comun_96_PP.obtenerConexion();
+        private string masterConnectionString => DAL_Comun_96_PP.DAL_Comun_96_PP.obtenerConexionMaster();
 
         public void RealizarBackup(string backupPath)
         {
@@ -95,7 +95,7 @@ namespace DAL
 
         public bool RealizarRestoreIniciar(string instancia)
         {
-            DAL_96_PP.DAL_96_PP.PasarleInstancia(instancia);
+            DAL_Comun_96_PP.DAL_Comun_96_PP.PasarleInstancia(instancia);
 
             string rutaPrimeraVez = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -108,12 +108,12 @@ namespace DAL
 
             if (!existeBase || !baseInicializada)
             {
-                DAL_96_PP.DAL_96_PP.EjecutarScript(ObtenerRutaScript("Script_Create.sql"));
+                DAL_Comun_96_PP.DAL_Comun_96_PP.EjecutarScript(ObtenerRutaScript("Script_Create.sql"));
                 scriptEjecutado = true;
             }
             else if (primeraEjecucionInstalador)
             {
-                DAL_96_PP.DAL_96_PP.EjecutarScript(ObtenerRutaScript("Script_Alter.sql"));
+                DAL_Comun_96_PP.DAL_Comun_96_PP.EjecutarScript(ObtenerRutaScript("Script_Alter.sql"));
                 scriptEjecutado = true;
             }
 
@@ -124,7 +124,7 @@ namespace DAL
                 string rutaScriptTaller = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Script_TallerMecanico.sql");
                 if (File.Exists(rutaScriptTaller))
                 {
-                    DAL_96_PP.DAL_96_PP.EjecutarScript(rutaScriptTaller);
+                    DAL_Comun_96_PP.DAL_Comun_96_PP.EjecutarScript(rutaScriptTaller);
                     scriptEjecutado = true;
                 }
             }
@@ -253,7 +253,7 @@ SELECT @path;";
                 new SqlParameter("@RutaCompleta", rutaCompleta)
             };
 
-            DAL_96_PP.DAL_96_PP.ExecuteNonQuery(comandoBackup, parametros);
+            DAL_Comun_96_PP.DAL_Comun_96_PP.ExecuteNonQuery(comandoBackup, parametros);
         }
 
         private string ObtenerCarpetaTrabajoServidor()

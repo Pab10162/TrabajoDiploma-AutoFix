@@ -2,9 +2,7 @@ using System;
 
 namespace BE_96_PP
 {
-    // RFN1 - Entidad Vehículo.
-    // La patente es el identificador (paso 4 del RFN1: "verifica si el vehículo se
-    // encuentra registrado mediante la patente"). Cada vehículo pertenece a un cliente.
+    
     public class BE_Vehiculo_96_PP
     {
         public string Patente { get; set; }
@@ -14,7 +12,6 @@ namespace BE_96_PP
         public BE_Cliente_96_PP Cliente { get; set; }
         public bool Activo { get; set; }
 
-        // Propiedades de solo lectura para mostrar el dueño en las grillas.
         public string DniCliente => Cliente?.Dni;
         public string NombreCliente => Cliente == null ? null : $"{Cliente.Apellido}, {Cliente.Nombre}";
 

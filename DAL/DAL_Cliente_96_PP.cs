@@ -17,7 +17,7 @@ namespace DAL_96_PP
         {
             string query = @"INSERT INTO dbo.Cliente_56PS (DNI, Nombre, Apellido, Telefono, Direccion, Activo)
                              VALUES (@DNI, @Nombre, @Apellido, @Telefono, @Direccion, @Activo)";
-            DAL_96_PP.ExecuteNonQuery(query, Parametros(cliente));
+            DAL_Comun_96_PP.ExecuteNonQuery(query, Parametros(cliente));
         }
 
         public void Modificar(BE_Cliente_96_PP cliente)
@@ -29,12 +29,12 @@ namespace DAL_96_PP
                                 Direccion = @Direccion,
                                 Activo = @Activo
                              WHERE DNI = @DNI";
-            DAL_96_PP.ExecuteNonQuery(query, Parametros(cliente));
+            DAL_Comun_96_PP.ExecuteNonQuery(query, Parametros(cliente));
         }
 
         public List<BE_Cliente_96_PP> ObtenerTodos()
         {
-            DataSet ds = DAL_96_PP.ExecuteDataSet(SelectBase + " ORDER BY Apellido, Nombre", null);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(SelectBase + " ORDER BY Apellido, Nombre", null);
             List<BE_Cliente_96_PP> lista = new List<BE_Cliente_96_PP>();
             foreach (DataRow fila in ds.Tables[0].Rows)
                 lista.Add(Mapear(fila));
@@ -43,7 +43,7 @@ namespace DAL_96_PP
 
         public BE_Cliente_96_PP ObtenerPorDni(string dni)
         {
-            DataSet ds = DAL_96_PP.ExecuteDataSet(
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(
                 SelectBase + " WHERE DNI = @DNI",
                 new[] { new SqlParameter("@DNI", dni) });
 
@@ -52,7 +52,7 @@ namespace DAL_96_PP
 
         public bool Existe(string dni)
         {
-            object resultado = DAL_96_PP.ExecuteScalar(
+            object resultado = DAL_Comun_96_PP.ExecuteScalar(
                 "SELECT COUNT(*) FROM dbo.Cliente_56PS WHERE DNI = @DNI",
                 new[] { new SqlParameter("@DNI", dni) });
             return Convert.ToInt32(resultado) > 0;

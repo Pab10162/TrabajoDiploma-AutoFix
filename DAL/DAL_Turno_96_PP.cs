@@ -36,12 +36,12 @@ namespace DAL_96_PP
                 new SqlParameter("@DNI_Mecanico", (object)turno.DniMecanico ?? DBNull.Value)
             };
 
-            return Convert.ToInt32(DAL_96_PP.ExecuteScalar(query, parametros));
+            return Convert.ToInt32(DAL_Comun_96_PP.ExecuteScalar(query, parametros));
         }
 
         public void CambiarEstado(int idTurno, BE_Turno_96_PP.EstadoTurno nuevoEstado)
         {
-            DAL_96_PP.ExecuteNonQuery(
+            DAL_Comun_96_PP.ExecuteNonQuery(
                 "UPDATE dbo.Turno_56PS SET Estado = @Estado WHERE IdTurno = @Id",
                 new[]
                 {
@@ -73,7 +73,7 @@ namespace DAL_96_PP
         // Horarios ya tomados en una fecha (los turnos cancelados liberan el horario).
         public List<TimeSpan> ObtenerHorariosOcupados(DateTime fecha)
         {
-            DataSet ds = DAL_96_PP.ExecuteDataSet(
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(
                 "SELECT Horario FROM dbo.Turno_56PS WHERE Fecha = @Fecha AND Estado <> 'Cancelado'",
                 new[] { new SqlParameter("@Fecha", SqlDbType.Date) { Value = fecha.Date } });
 
@@ -86,7 +86,7 @@ namespace DAL_96_PP
         // ¿El vehículo ya tiene un turno vigente (Pendiente/Confirmado) ese día?
         public bool VehiculoTieneTurnoVigente(string patente, DateTime fecha)
         {
-            object resultado = DAL_96_PP.ExecuteScalar(
+            object resultado = DAL_Comun_96_PP.ExecuteScalar(
                 @"SELECT COUNT(*) FROM dbo.Turno_56PS
                   WHERE Patente_Vehiculo = @Patente AND Fecha = @Fecha
                     AND Estado IN ('Pendiente', 'Confirmado')",
@@ -112,7 +112,7 @@ namespace DAL_96_PP
 
         private int ContarVigentes(string condicion, string valor)
         {
-            object resultado = DAL_96_PP.ExecuteScalar(
+            object resultado = DAL_Comun_96_PP.ExecuteScalar(
                 "SELECT COUNT(*) FROM dbo.Turno_56PS WHERE " + condicion +
                 " AND Fecha >= @Hoy AND Estado IN ('Pendiente', 'Confirmado')",
                 new[]
@@ -139,7 +139,7 @@ namespace DAL_96_PP
                 WHERE T.Fecha BETWEEN @Desde AND @Hasta
                 ORDER BY T.Fecha, T.Horario";
 
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, new[]
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, new[]
             {
                 new SqlParameter("@Desde", SqlDbType.Date) { Value = desde.Date },
                 new SqlParameter("@Hasta", SqlDbType.Date) { Value = hasta.Date }
@@ -168,7 +168,7 @@ namespace DAL_96_PP
 
         private List<BE_Turno_96_PP> Consultar(string query, SqlParameter[] parametros)
         {
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
             List<BE_Turno_96_PP> lista = new List<BE_Turno_96_PP>();
 
             foreach (DataRow fila in ds.Tables[0].Rows)

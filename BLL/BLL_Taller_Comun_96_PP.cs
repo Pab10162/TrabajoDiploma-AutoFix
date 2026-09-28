@@ -7,15 +7,12 @@ using System.Data;
 
 namespace BLL
 {
-    // Comportamiento compartido por las BLL del RFN1:
-    //  - recalcular los dígitos verificadores de la tabla después de cada escritura
-    //  - registrar el evento en la bitácora con el usuario que tiene la sesión abierta
-    // Es lo mismo que hace BLL_Usuario_96_PP en el SistemaBase, pero centralizado.
+    
     public abstract class BLL_Taller_Comun_96_PP
     {
         protected void RecalcularDV(string tabla)
         {
-            DataTable registros = DAL_96_PP.ConsultarTabla(tabla);
+            DataTable registros = DAL_Comun_96_PP.ConsultarTabla(tabla);
             new BLL_DigitoVerificador_96_PP().CalcularDV(tabla, registros);
         }
 

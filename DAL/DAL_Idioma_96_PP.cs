@@ -10,7 +10,7 @@ namespace DAL_96_PP
     {
         public List<Idioma_96_PP> ObtenerIdiomas()
         {
-            DataSet datos = DAL_96_PP.ExecuteDataSet(
+            DataSet datos = DAL_Comun_96_PP.ExecuteDataSet(
                 "SELECT Nombre, Tipo FROM Idioma_56PS ORDER BY Nombre",
                 null);
 
@@ -29,7 +29,7 @@ namespace DAL_96_PP
 
         public Idioma_96_PP ObtenerIdioma(string tipo)
         {
-            DataSet datos = DAL_96_PP.ExecuteDataSet(
+            DataSet datos = DAL_Comun_96_PP.ExecuteDataSet(
                 "SELECT Nombre, Tipo FROM Idioma_56PS WHERE Tipo = @Tipo",
                 new[] { new SqlParameter("@Tipo", tipo) });
 

@@ -22,7 +22,7 @@ namespace DAL_96_PP
         {
             string query = @"INSERT INTO dbo.Vehiculo_56PS (Patente, Marca, Modelo, Cedula, DNI_Cliente, Activo)
                              VALUES (@Patente, @Marca, @Modelo, @Cedula, @DNI_Cliente, @Activo)";
-            DAL_96_PP.ExecuteNonQuery(query, Parametros(vehiculo));
+            DAL_Comun_96_PP.ExecuteNonQuery(query, Parametros(vehiculo));
         }
 
         public void Modificar(BE_Vehiculo_96_PP vehiculo)
@@ -34,7 +34,7 @@ namespace DAL_96_PP
                                 DNI_Cliente = @DNI_Cliente,
                                 Activo = @Activo
                              WHERE Patente = @Patente";
-            DAL_96_PP.ExecuteNonQuery(query, Parametros(vehiculo));
+            DAL_Comun_96_PP.ExecuteNonQuery(query, Parametros(vehiculo));
         }
 
         public List<BE_Vehiculo_96_PP> ObtenerTodos()
@@ -59,7 +59,7 @@ namespace DAL_96_PP
 
         public bool Existe(string patente)
         {
-            object resultado = DAL_96_PP.ExecuteScalar(
+            object resultado = DAL_Comun_96_PP.ExecuteScalar(
                 "SELECT COUNT(*) FROM dbo.Vehiculo_56PS WHERE Patente = @Patente",
                 new[] { new SqlParameter("@Patente", patente) });
             return Convert.ToInt32(resultado) > 0;
@@ -67,7 +67,7 @@ namespace DAL_96_PP
 
         private List<BE_Vehiculo_96_PP> Consultar(string query, SqlParameter[] parametros)
         {
-            DataSet ds = DAL_96_PP.ExecuteDataSet(query, parametros);
+            DataSet ds = DAL_Comun_96_PP.ExecuteDataSet(query, parametros);
             List<BE_Vehiculo_96_PP> lista = new List<BE_Vehiculo_96_PP>();
             foreach (DataRow fila in ds.Tables[0].Rows)
                 lista.Add(Mapear(fila));

@@ -39,7 +39,7 @@ namespace BLL
                 Evento_96_PP.Criticidad.Alto
             );
 
-            new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_96_PP.ConsultarTabla("Familias"));
+            new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_Comun_96_PP.ConsultarTabla("Familias"));
             new BLL_BitacoraEvento_96_PP().RegistrarEvento(evento);
         }
 
@@ -55,7 +55,7 @@ namespace BLL
                 throw new Exception("La familia no existe o se encuentra inactiva.");
 
             dalrol.Modificar(f);
-            new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_96_PP.ConsultarTabla("Familias"));
+            new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_Comun_96_PP.ConsultarTabla("Familias"));
         }
 
         public void CrearFamilia(Familia_96_PP fam)
@@ -78,9 +78,9 @@ namespace BLL
             try
             {
                 dalrol.CrearFamiliaConElementos(fam, elementosIniciales);
-                new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_96_PP.ConsultarTabla("Familias"));
-                new BLL_DigitoVerificador_96_PP().CalcularDV("FamiliaPatente", DAL_96_PP.ConsultarTabla("FamiliaPatente"));
-                new BLL_DigitoVerificador_96_PP().CalcularDV("FamiliaFamilia", DAL_96_PP.ConsultarTabla("FamiliaFamilia"));
+                new BLL_DigitoVerificador_96_PP().CalcularDV("Familias", DAL_Comun_96_PP.ConsultarTabla("Familias"));
+                new BLL_DigitoVerificador_96_PP().CalcularDV("FamiliaPatente", DAL_Comun_96_PP.ConsultarTabla("FamiliaPatente"));
+                new BLL_DigitoVerificador_96_PP().CalcularDV("FamiliaFamilia", DAL_Comun_96_PP.ConsultarTabla("FamiliaFamilia"));
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
 
@@ -157,8 +157,8 @@ namespace BLL
 
             dalrol.AsignarPermisoAFamilia(p, f);
             var dv = new BLL_DigitoVerificador_96_PP();
-            dv.CalcularDV("FamiliaPatente", DAL_96_PP.ConsultarTabla("FamiliaPatente"));
-            dv.CalcularDV("FamiliaFamilia", DAL_96_PP.ConsultarTabla("FamiliaFamilia"));
+            dv.CalcularDV("FamiliaPatente", DAL_Comun_96_PP.ConsultarTabla("FamiliaPatente"));
+            dv.CalcularDV("FamiliaFamilia", DAL_Comun_96_PP.ConsultarTabla("FamiliaFamilia"));
 
             var user = SessionManager_96_PP.getInstancia().getUsuarioActivo();
             Evento_96_PP evento = new Evento_96_PP(
@@ -178,8 +178,8 @@ namespace BLL
 
             dalrol.EliminarPermisodeFamilia(p, cod);
             var dv = new BLL_DigitoVerificador_96_PP();
-            dv.CalcularDV("FamiliaPatente", DAL_96_PP.ConsultarTabla("FamiliaPatente"));
-            dv.CalcularDV("FamiliaFamilia", DAL_96_PP.ConsultarTabla("FamiliaFamilia"));
+            dv.CalcularDV("FamiliaPatente", DAL_Comun_96_PP.ConsultarTabla("FamiliaPatente"));
+            dv.CalcularDV("FamiliaFamilia", DAL_Comun_96_PP.ConsultarTabla("FamiliaFamilia"));
         }
 
         public Familia_96_PP ObtenerFamilia(string codigo)
