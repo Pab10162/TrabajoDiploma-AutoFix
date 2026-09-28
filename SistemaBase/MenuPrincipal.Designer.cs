@@ -1,6 +1,6 @@
-﻿namespace SistemaBase
+namespace SistemaBase
 {
-    partial class MenuPrincipal_56PS
+    partial class MenuPrincipal_96_PP
     {
         /// <summary>
         /// Required designer variable.

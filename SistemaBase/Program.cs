@@ -20,12 +20,12 @@ namespace GUI
             Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
             Application.ThreadException += ErrorNoControlado;
 
-            Application.Run(new MenuPrincipal_56PS());
+            Application.Run(new MenuPrincipal_96_PP());
         }
 
         private static void ErrorNoControlado(object sender, ThreadExceptionEventArgs e)
         {
-            new BLL_Idioma_56PS().MostrarMensaje(
+            new BLL_Idioma_96_PP().MostrarMensaje(
                 "Error: " + e.Exception.Message,
                 "Error",
                 MessageBoxButtons.OK,

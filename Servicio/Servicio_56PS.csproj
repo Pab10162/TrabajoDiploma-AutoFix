@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,20 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DigitoVerificador_56PS.cs" />
-    <Compile Include="Evento_56PS.cs" />
-    <Compile Include="Familia_56PS.cs" />
-    <Compile Include="IdiomaObserver_56PS.cs" />
-    <Compile Include="Idioma_56PS.cs" />
-    <Compile Include="IObservable_56PS.cs" />
-    <Compile Include="Patente_56PS.cs" />
-    <Compile Include="Rol_56PS.cs" />
-    <Compile Include="Permisos_56PS.cs" />
-    <Compile Include="Usuario_56PS.cs" />
-    <Compile Include="CryptoManager_56PS.cs" />
-    <Compile Include="IntentosLogin_56PS.cs" />
+    <Compile Include="DigitoVerificador_96_PP.cs" />
+    <Compile Include="Evento_96_PP.cs" />
+    <Compile Include="Familia_96_PP.cs" />
+    <Compile Include="IdiomaObserver_96_PP.cs" />
+    <Compile Include="Idioma_96_PP.cs" />
+    <Compile Include="IObservable_96_PP.cs" />
+    <Compile Include="Patente_96_PP.cs" />
+    <Compile Include="Rol_96_PP.cs" />
+    <Compile Include="Permisos_96_PP.cs" />
+    <Compile Include="Usuario_96_PP.cs" />
+    <Compile Include="CryptoManager_96_PP.cs" />
+    <Compile Include="IntentosLogin_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SessionManager_56PS.cs" />
+    <Compile Include="SessionManager_96_PP.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE_56PS.csproj">

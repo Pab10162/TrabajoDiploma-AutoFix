@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -52,19 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL_BackUpRestore_56PS.cs" />
-    <Compile Include="BLL_BitacoraEvento_56PS.cs" />
-    <Compile Include="BLL_DigitoVerificador_56PS.cs" />
-    <Compile Include="BLL_Familia_56PS.cs" />
-    <Compile Include="BLL_Idioma_56PS.cs" />
-    <Compile Include="BLL_Patente_56PS.cs" />
-    <Compile Include="BLL_Rol_56PS.cs" />
-    <Compile Include="BLL_Usuario_56PS.cs" />
-    <Compile Include="BLL_Cliente_56PS.cs" />
-    <Compile Include="BLL_ReporteTurnos_56PS.cs" />
-    <Compile Include="BLL_Taller_Comun_56PS.cs" />
-    <Compile Include="BLL_Turno_56PS.cs" />
-    <Compile Include="BLL_Vehiculo_56PS.cs" />
+    <Compile Include="BLL_BackUpRestore_96_PP.cs" />
+    <Compile Include="BLL_BitacoraEvento_96_PP.cs" />
+    <Compile Include="BLL_DigitoVerificador_96_PP.cs" />
+    <Compile Include="BLL_Familia_96_PP.cs" />
+    <Compile Include="BLL_Idioma_96_PP.cs" />
+    <Compile Include="BLL_Patente_96_PP.cs" />
+    <Compile Include="BLL_Rol_96_PP.cs" />
+    <Compile Include="BLL_Usuario_96_PP.cs" />
+    <Compile Include="BLL_Cliente_96_PP.cs" />
+    <Compile Include="BLL_ReporteTurnos_96_PP.cs" />
+    <Compile Include="BLL_Taller_Comun_96_PP.cs" />
+    <Compile Include="BLL_Turno_96_PP.cs" />
+    <Compile Include="BLL_Vehiculo_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

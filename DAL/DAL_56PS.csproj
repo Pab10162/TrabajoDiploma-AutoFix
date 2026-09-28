@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,16 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL_56PS.cs" />
-    <Compile Include="DAL_BackUpRestore_56PS.cs" />
-    <Compile Include="DAL_BitacoraEventos_56PS.cs" />
-    <Compile Include="DAL_DigitoVerificador_56PS.cs" />
-    <Compile Include="DAL_Idioma_56PS.cs" />
-    <Compile Include="DAL_Rol_56PS.cs" />
-    <Compile Include="DAL_Usuario_56PS.cs" />
-    <Compile Include="DAL_Cliente_56PS.cs" />
-    <Compile Include="DAL_Turno_56PS.cs" />
-    <Compile Include="DAL_Vehiculo_56PS.cs" />
+    <Compile Include="DAL_96_PP.cs" />
+    <Compile Include="DAL_BackUpRestore_96_PP.cs" />
+    <Compile Include="DAL_BitacoraEventos_96_PP.cs" />
+    <Compile Include="DAL_DigitoVerificador_96_PP.cs" />
+    <Compile Include="DAL_Idioma_96_PP.cs" />
+    <Compile Include="DAL_Rol_96_PP.cs" />
+    <Compile Include="DAL_Usuario_96_PP.cs" />
+    <Compile Include="DAL_Cliente_96_PP.cs" />
+    <Compile Include="DAL_Turno_96_PP.cs" />
+    <Compile Include="DAL_Vehiculo_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

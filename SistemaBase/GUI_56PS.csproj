@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -58,135 +58,135 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administracion\FormABMUsuario_56PS.cs">
+    <Compile Include="Administracion\FormABMUsuario_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormABMUsuario_56PS.Designer.cs">
-      <DependentUpon>FormABMUsuario_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormABMUsuario_96_PP.Designer.cs">
+      <DependentUpon>FormABMUsuario_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\FormBitacoraEventos_56PS.cs">
+    <Compile Include="Administracion\FormBitacoraEventos_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormBitacoraEventos_56PS.Designer.cs">
-      <DependentUpon>FormBitacoraEventos_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormBitacoraEventos_96_PP.Designer.cs">
+      <DependentUpon>FormBitacoraEventos_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\FormFamilias_56PS.cs">
+    <Compile Include="Administracion\FormFamilias_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormFamilias_56PS.Designer.cs">
-      <DependentUpon>FormFamilias_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormFamilias_96_PP.Designer.cs">
+      <DependentUpon>FormFamilias_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\FormGestionBackUpRestore_56PS.cs">
+    <Compile Include="Administracion\FormGestionBackUpRestore_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormGestionBackUpRestore_56PS.Designer.cs">
-      <DependentUpon>FormGestionBackUpRestore_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormGestionBackUpRestore_96_PP.Designer.cs">
+      <DependentUpon>FormGestionBackUpRestore_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\FormRoles_56PS.cs">
+    <Compile Include="Administracion\FormRoles_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormRoles_56PS.Designer.cs">
-      <DependentUpon>FormRoles_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormRoles_96_PP.Designer.cs">
+      <DependentUpon>FormRoles_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\FormReparacion_56PS.cs">
+    <Compile Include="Administracion\FormReparacion_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administracion\FormReparacion_56PS.Designer.cs">
-      <DependentUpon>FormReparacion_56PS.cs</DependentUpon>
+    <Compile Include="Administracion\FormReparacion_96_PP.Designer.cs">
+      <DependentUpon>FormReparacion_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestros\FormClientes_56PS.cs">
+    <Compile Include="Maestros\FormClientes_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestros\FormClientes_56PS.Designer.cs">
-      <DependentUpon>FormClientes_56PS.cs</DependentUpon>
+    <Compile Include="Maestros\FormClientes_96_PP.Designer.cs">
+      <DependentUpon>FormClientes_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestros\FormVehiculos_56PS.cs">
+    <Compile Include="Maestros\FormVehiculos_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestros\FormVehiculos_56PS.Designer.cs">
-      <DependentUpon>FormVehiculos_56PS.cs</DependentUpon>
+    <Compile Include="Maestros\FormVehiculos_96_PP.Designer.cs">
+      <DependentUpon>FormVehiculos_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Turnos\FormTurnos_56PS.cs">
+    <Compile Include="Turnos\FormTurnos_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Turnos\FormTurnos_56PS.Designer.cs">
-      <DependentUpon>FormTurnos_56PS.cs</DependentUpon>
+    <Compile Include="Turnos\FormTurnos_96_PP.Designer.cs">
+      <DependentUpon>FormTurnos_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\FormReporteTurnos_56PS.cs">
+    <Compile Include="Reportes\FormReporteTurnos_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reportes\FormReporteTurnos_56PS.Designer.cs">
-      <DependentUpon>FormReporteTurnos_56PS.cs</DependentUpon>
+    <Compile Include="Reportes\FormReporteTurnos_96_PP.Designer.cs">
+      <DependentUpon>FormReporteTurnos_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuPrincipal_56PS.cs">
+    <Compile Include="MenuPrincipal_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipal_56PS.Designer.cs">
-      <DependentUpon>MenuPrincipal_56PS.cs</DependentUpon>
+    <Compile Include="MenuPrincipal_96_PP.Designer.cs">
+      <DependentUpon>MenuPrincipal_96_PP.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Usuario\FormCambiarContraseña_56PS.cs">
+    <Compile Include="Usuario\FormCambiarContraseña_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuario\FormCambiarContraseña_56PS.Designer.cs">
-      <DependentUpon>FormCambiarContraseña_56PS.cs</DependentUpon>
+    <Compile Include="Usuario\FormCambiarContraseña_96_PP.Designer.cs">
+      <DependentUpon>FormCambiarContraseña_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuario\FormCambiarIdioma_56PS.cs">
+    <Compile Include="Usuario\FormCambiarIdioma_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuario\FormCambiarIdioma_56PS.Designer.cs">
-      <DependentUpon>FormCambiarIdioma_56PS.cs</DependentUpon>
+    <Compile Include="Usuario\FormCambiarIdioma_96_PP.Designer.cs">
+      <DependentUpon>FormCambiarIdioma_96_PP.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usuario\FormIniciarSesion_56PS.cs">
+    <Compile Include="Usuario\FormIniciarSesion_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usuario\FormIniciarSesion_56PS.Designer.cs">
-      <DependentUpon>FormIniciarSesion_56PS.cs</DependentUpon>
+    <Compile Include="Usuario\FormIniciarSesion_96_PP.Designer.cs">
+      <DependentUpon>FormIniciarSesion_96_PP.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Administracion\FormABMUsuario_56PS.resx">
-      <DependentUpon>FormABMUsuario_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormABMUsuario_96_PP.resx">
+      <DependentUpon>FormABMUsuario_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\FormBitacoraEventos_56PS.resx">
-      <DependentUpon>FormBitacoraEventos_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormBitacoraEventos_96_PP.resx">
+      <DependentUpon>FormBitacoraEventos_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\FormFamilias_56PS.resx">
-      <DependentUpon>FormFamilias_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormFamilias_96_PP.resx">
+      <DependentUpon>FormFamilias_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\FormGestionBackUpRestore_56PS.resx">
-      <DependentUpon>FormGestionBackUpRestore_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormGestionBackUpRestore_96_PP.resx">
+      <DependentUpon>FormGestionBackUpRestore_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\FormRoles_56PS.resx">
-      <DependentUpon>FormRoles_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormRoles_96_PP.resx">
+      <DependentUpon>FormRoles_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\FormReparacion_56PS.resx">
-      <DependentUpon>FormReparacion_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\FormReparacion_96_PP.resx">
+      <DependentUpon>FormReparacion_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\FormClientes_56PS.resx">
-      <DependentUpon>FormClientes_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Maestros\FormClientes_96_PP.resx">
+      <DependentUpon>FormClientes_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\FormVehiculos_56PS.resx">
-      <DependentUpon>FormVehiculos_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Maestros\FormVehiculos_96_PP.resx">
+      <DependentUpon>FormVehiculos_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Turnos\FormTurnos_56PS.resx">
-      <DependentUpon>FormTurnos_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Turnos\FormTurnos_96_PP.resx">
+      <DependentUpon>FormTurnos_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\FormReporteTurnos_56PS.resx">
-      <DependentUpon>FormReporteTurnos_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Reportes\FormReporteTurnos_96_PP.resx">
+      <DependentUpon>FormReporteTurnos_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipal_56PS.resx">
-      <DependentUpon>MenuPrincipal_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipal_96_PP.resx">
+      <DependentUpon>MenuPrincipal_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usuario\FormCambiarContraseña_56PS.resx">
-      <DependentUpon>FormCambiarContraseña_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Usuario\FormCambiarContraseña_96_PP.resx">
+      <DependentUpon>FormCambiarContraseña_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usuario\FormCambiarIdioma_56PS.resx">
-      <DependentUpon>FormCambiarIdioma_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Usuario\FormCambiarIdioma_96_PP.resx">
+      <DependentUpon>FormCambiarIdioma_96_PP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usuario\FormIniciarSesion_56PS.resx">
-      <DependentUpon>FormIniciarSesion_56PS.cs</DependentUpon>
+    <EmbeddedResource Include="Usuario\FormIniciarSesion_96_PP.resx">
+      <DependentUpon>FormIniciarSesion_96_PP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
