@@ -26,6 +26,18 @@ namespace Servicio
             hijos.Add(elemento);
         }
 
+        // Usado solo por la DAL para reconstruir el arbol desde la base de datos:
+        // no valida referencias circulares ni redundancia contra todo el subarbol
+        // (eso ya deberia haber sido validado al momento de guardar cada asignacion),
+        // solo evita duplicar un hijo directo si la reconstruccion lo trae dos veces.
+        public virtual void AgregarSinValidar(Rol_96_PP elemento)
+        {
+            if (hijos.Exists(h => h.Codigo == elemento.Codigo))
+                return;
+
+            hijos.Add(elemento);
+        }
+
         public bool Contiene(string codigo)
         {
             if (hijos == null)

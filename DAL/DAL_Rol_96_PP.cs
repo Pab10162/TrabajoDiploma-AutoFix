@@ -548,7 +548,7 @@ namespace DAL_96_PP
             foreach (var fam in familias)
             {
                 CargarHijosFamilia(fam, new HashSet<string>(StringComparer.OrdinalIgnoreCase) { fam.Codigo });
-                raiz.Agregar(fam);
+                raiz.AgregarSinValidar(fam);
             }
 
             string queryPat = "SELECT p.CodigoPatente, p.Nombre FROM Patentes p " +
@@ -566,7 +566,7 @@ namespace DAL_96_PP
                     Nombre = row["Nombre"].ToString(),
                     esfamilia = false
                 };
-                raiz.Agregar(pat);
+                raiz.AgregarSinValidar(pat);
             }
 
             return raiz;
@@ -624,7 +624,7 @@ namespace DAL_96_PP
                     continue;
 
                 CargarHijosFamilia(hija, ruta);
-                familia.Agregar(hija);
+                familia.AgregarSinValidar(hija);
                 ruta.Remove(hija.Codigo);
             }
 
@@ -641,7 +641,7 @@ namespace DAL_96_PP
                 patente.Codigo = row["CodigoPatente"].ToString();
                 patente.Nombre = row["Nombre"].ToString();
                 patente.esfamilia = false;
-                familia.Agregar(patente);
+                familia.AgregarSinValidar(patente);
             }
         }
 
