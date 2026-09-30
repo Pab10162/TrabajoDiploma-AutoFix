@@ -67,36 +67,29 @@ namespace SistemaBase.Administracion
 
         List<Usuario_96_PP> listaGeneral;
 
+        // Usuario que se esta editando en modo "modificar". Se guarda al presionar
+        // Modificar para no depender de la fila seleccionada al momento de Aplicar
+        // (si en el medio se cambiaba el filtro o la seleccion, se guardaban la
+        // contraseña y el nombre de usuario de otra persona).
+        Usuario_96_PP usuarioEnEdicion;
+
         public FormABMUsuario_96_PP()
         {
             InitializeComponent();
 
             CargarRoles();
 
-            listaGeneral = new BLL_Usuario_96_PP().obtenerUsuarios().Where(e => e.Dni != SessionManager_96_PP.getInstancia().getUsuarioActivo().Dni).ToList();
-
-            dataGridView1.DataSource = listaGeneral;
-
-
             deshabilitarBotonCancelar();
             deshabilitarBotonAplicar();
 
-
-            //ActualizarIdioma_96_PP();
-
-            comboBox1.SelectedItem = 0;
+            // Filtro inicial: Todos. Se marca antes de cargar la grilla para que
+            // actualizar() sepa que filtro aplicar.
+            radioButton2.Checked = true;
 
             actualizar();
-            ConfigurarColumnasRolEIdioma();
 
             ActualizarMensajeModo();
 
-            dataGridView1.Columns["Contraseña"].Visible = false;
-            dataGridView1.Columns["Email"].Visible = false;
-            dataGridView1.Columns["Bloqueado"].Visible = false;
-            dataGridView1.Columns["Activo"].Visible = false;
-            dataGridView1.Columns["Idioma"].Visible = false;
-            dataGridView1.Columns["Rol"].Visible = false;
             SessionManager_96_PP.getInstancia().Suscribir(this);
 
             actualizarIdioma();
@@ -210,10 +203,14 @@ namespace SistemaBase.Administracion
 
 
 
-            DataGridViewRow fila = dataGridView1.SelectedRows[0];
+            usuarioEnEdicion = dataGridView1.SelectedRows[0].DataBoundItem as Usuario_96_PP;
+            if (usuarioEnEdicion == null)
+            {
+                new BLL_Idioma_96_PP().MostrarMensaje("Debe seleccionar un usuario de la lista.");
+                return;
+            }
 
-
-            string codigoRol = ((Usuario_96_PP)fila.DataBoundItem).Rol?.Codigo;
+            string codigoRol = usuarioEnEdicion.Rol?.Codigo;
             if (!string.IsNullOrEmpty(codigoRol))
             {
                 var items = comboBox1.DataSource as List<Rol_96_PP>;
@@ -221,16 +218,15 @@ namespace SistemaBase.Administracion
                 if (idx >= 0) comboBox1.SelectedIndex = idx;
             }
 
-            // Cargar datos al formulario
-            textBox1.Text = fila.Cells["DNI"].Value.ToString();
-            textBox3.Text = fila.Cells["Nombre"].Value.ToString();
-            textBox2.Text = fila.Cells["Apellido"].Value.ToString();
-            textBox4.Text = fila.Cells["Email"].Value.ToString();
-            checkBox1.Checked = true;
-            checkBox2.Checked = Convert.ToBoolean(fila.Cells["Bloqueado"].Value);
-
-            if (checkBox2.Checked)
-                checkBox1.Checked = false;
+            // Cargar datos al formulario con el estado REAL del usuario
+            // (antes Activo se cargaba siempre en true, o en false si estaba bloqueado,
+            // y al aplicar se guardaba ese valor inventado).
+            textBox1.Text = usuarioEnEdicion.Dni;
+            textBox3.Text = usuarioEnEdicion.Nombre;
+            textBox2.Text = usuarioEnEdicion.Apellido;
+            textBox4.Text = usuarioEnEdicion.Email ?? string.Empty;
+            checkBox1.Checked = usuarioEnEdicion.Activo;
+            checkBox2.Checked = usuarioEnEdicion.Bloqueado;
 
             textBox1.Enabled = false;
 
@@ -337,118 +333,74 @@ namespace SistemaBase.Administracion
                
             }
 
-
-
-            //if (modo == "desbloquear")
-            //{
-            //    try
-            //    {
-
-            //        DataGridViewRow fila = dataGridView1.SelectedRows[0];
-
-
-            //        string dni = fila.Cells["DNI"].Value.ToString();
-
-            //        Usuario_96_PP usuarioADesbloquear = (Usuario_96_PP)new BLL_Usuario_96_PP().obtenerUsuarioPorDni(dni); // to do
-
-            //        if (!usuarioADesbloquear.Bloqueado)
-            //        {
-            //            MessageBox.Show("No puede desbloquear un usuario que no se encuentra bloqueado");
-            //            return;
-            //        }
-
-            //        new BLL_Usuario_96_PP().desbloquearUsuario(dni);
-
-            //        MessageBox.Show($"Usuario {usuarioADesbloquear.NombreUsuario} desbloqueado con exito");
-
-
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Debe seleccionar un usuario para poder desbloquearlo");
-            //    }
-
-
-            //}
-
             if (modo == "modificar")
             {
 
-                string dni = textBox1.Text;
-                string apellido = textBox2.Text;
-                string nombre = textBox3.Text;
-                string email = textBox4.Text;
+                if (usuarioEnEdicion == null)
+                {
+                    new BLL_Idioma_96_PP().MostrarMensaje("Debe seleccionar un usuario de la lista.");
+                    return;
+                }
+
+                string dni = usuarioEnEdicion.Dni;
+                string apellido = textBox2.Text.Trim();
+                string nombre = textBox3.Text.Trim();
+                string email = textBox4.Text.Trim();
                 bool activo = checkBox1.Checked;
                 bool bloqueado = checkBox2.Checked;
-
-                DataGridViewRow fila = dataGridView1.SelectedRows[0];
-
-                textBox1.Text = fila.Cells["DNI"].Value.ToString();
-                textBox3.Text = fila.Cells["Nombre"].Value.ToString();
-                textBox2.Text = fila.Cells["Apellido"].Value.ToString();
-                textBox4.Text = fila.Cells["Email"].Value.ToString();
-                checkBox1.Checked = true;
-                checkBox2.Checked = Convert.ToBoolean(fila.Cells["Bloqueado"].Value);
-
-
-
-
-
 
                 if (nombre.Length < 2 || apellido.Length < 2 || dni.Length < 2)
                 {
                     new BLL_Idioma_96_PP().MostrarMensaje("Nombre, Apellido y DNI deben tener al menos 2 caracteres.");
                     return;
                 }
-                string nombreUsuario = fila.Cells["NombreUsuario"].Value.ToString();
 
-                if (activo == bloqueado)
+                if (comboBox1.SelectedItem == null)
                 {
-
-                    new BLL_Idioma_96_PP().MostrarMensaje("Solo puede tener un estado, bloqueado y activo no pueden tener el mismo valor");
+                    new BLL_Idioma_96_PP().MostrarMensaje("Debe seleccionar un rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-
-
+                // Se quito la regla "activo y bloqueado no pueden ser iguales": el propio
+                // sistema genera esos estados (el login bloquea dejando Activo = 1 y
+                // Act./Desact. deja Bloqueado = 0), asi que esos usuarios no se podian modificar.
 
                 Usuario_96_PP user = new Usuario_96_PP(
                     apellido: apellido,
                     bloqueado: bloqueado,
-                    contraseña: fila.Cells["Contraseña"].Value.ToString(), //la contraseña no se puede cambiar desde este abm
+                    contraseña: usuarioEnEdicion.Contraseña, //la contraseña no se puede cambiar desde este abm
                     dni: dni,
                     email: email,
                     nombre: nombre,
-                    nombreUsuario: nombreUsuario,
+                    nombreUsuario: usuarioEnEdicion.NombreUsuario,
                     activo: activo,
-                    idioma: ((Usuario_96_PP)fila.DataBoundItem).Idioma,
-rol: (Rol_96_PP)comboBox1.SelectedItem);
+                    idioma: usuarioEnEdicion.Idioma,
+                    rol: (Rol_96_PP)comboBox1.SelectedItem);
 
-
-
-
-
-
-
-
-                BLL.BLL_Usuario_96_PP a = new BLL.BLL_Usuario_96_PP();
-                a.modificarUsuario(user);
+                try
+                {
+                    new BLL_Usuario_96_PP().modificarUsuario(user);
+                }
+                catch (Exception ex)
+                {
+                    new BLL_Idioma_96_PP().MostrarMensaje($"Error al modificar el usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 actualizar();
                 LimpiarCampos();
 
-
                 new BLL_Idioma_96_PP().MostrarMensaje("Usuario modificado");
-
 
                 var currentUser = SessionManager_96_PP.getInstancia().getUsuarioActivo();
 
                 Evento_96_PP evento = new Evento_96_PP(currentUser.Dni, DateTime.Now, "Usuarios", "Modificación de usuario", Evento_96_PP.Criticidad.Medio);
 
                 new BLL_BitacoraEvento_96_PP().RegistrarEvento(evento);
-        
 
+                usuarioEnEdicion = null;
             }
+
             if(modo == "crear")
             {
 
@@ -467,6 +419,14 @@ rol: (Rol_96_PP)comboBox1.SelectedItem);
                     if (comboBox1.SelectedItem == null)
                     {
                         new BLL_Idioma_96_PP().MostrarMensaje("Debe seleccionar un rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // El nombre de usuario se arma con Substring de 2 caracteres de cada campo:
+                    // con menos de 2 caracteres el Substring tiraba excepcion.
+                    if (textBox1.Text.Trim().Length < 2 || textBox2.Text.Trim().Length < 2 || textBox3.Text.Trim().Length < 2)
+                    {
+                        new BLL_Idioma_96_PP().MostrarMensaje("Nombre, Apellido y DNI deben tener al menos 2 caracteres.");
                         return;
                     }
 
@@ -509,7 +469,7 @@ rol: (Rol_96_PP)comboBox1.SelectedItem);
                         nombreUsuario: nombreUsuario,
                         idioma: new Idioma_96_PP("ES"),
                         activo: checkBox1.Checked,
-rol: (Rol_96_PP)comboBox1.SelectedItem
+                        rol: (Rol_96_PP)comboBox1.SelectedItem
                         );
 
 
@@ -556,6 +516,7 @@ rol: (Rol_96_PP)comboBox1.SelectedItem
         private void button6_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            usuarioEnEdicion = null;
 
             new BLL_Idioma_96_PP().MostrarMensaje("Operacion cancelada");
 
@@ -582,13 +543,42 @@ rol: (Rol_96_PP)comboBox1.SelectedItem
              ();
 
           
-            label2.Text = "Numero de usuarios: " + bl.obtenerUsuarios().Count();
+            List<Usuario_96_PP> todos = bl.obtenerUsuarios();
 
+            label2.Text = "Numero de usuarios: " + todos.Count;
 
-            listaGeneral = new BLL_Usuario_96_PP().obtenerUsuarios().Where(e => e.Dni != SessionManager_96_PP.getInstancia().getUsuarioActivo().Dni).ToList();
+            string dniActual = SessionManager_96_PP.getInstancia().getUsuarioActivo().Dni;
+            listaGeneral = todos.Where(e => e.Dni != dniActual).ToList();
 
-            dataGridView1.DataSource = listaGeneral;
+            // Antes se asignaba siempre la lista completa, ignorando el filtro marcado.
+            AplicarFiltro();
+        }
 
+        // Muestra en la grilla la lista segun el radio button marcado.
+        // Siempre con .ToList(): el DataGridView necesita un IList como DataSource.
+        private void AplicarFiltro()
+        {
+            if (listaGeneral == null)
+                return;
+
+            if (radioButton1.Checked)
+                dataGridView1.DataSource = listaGeneral.Where(x => x.Activo && !x.Bloqueado).ToList();
+            else if (radioButton3.Checked)
+                dataGridView1.DataSource = listaGeneral.Where(x => x.Bloqueado).ToList();
+            else
+                dataGridView1.DataSource = listaGeneral;
+
+            ConfigurarColumnasRolEIdioma();
+            OcultarColumnas();
+        }
+
+        private void OcultarColumnas()
+        {
+            foreach (string columna in new[] { "Contraseña", "Email", "Bloqueado", "Activo", "Idioma", "Rol" })
+            {
+                if (dataGridView1.Columns.Contains(columna))
+                    dataGridView1.Columns[columna].Visible = false;
+            }
         }
 
         //private void CargarRoles()
@@ -695,31 +685,21 @@ rol: (Rol_96_PP)comboBox1.SelectedItem
 
         }
 
+        // Los tres radio buttons estan en el mismo contenedor, asi que WinForms ya los
+        // hace excluyentes solo. Antes cada handler destildaba/tildaba a los otros a mano
+        // y eso disparaba los CheckedChanged en cadena (ej: estando en "Activos" y
+        // tocando "Bloqueados" terminaba marcado "Todos"). Ahora cada uno solo filtra
+        // cuando queda marcado.
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            if (!radioButton1.Checked)
-            {
-                radioButton2.Checked = true;
-            }
-            else
-            {
-                radioButton2.Checked = false;
-                dataGridView1.DataSource = listaGeneral.Where(x => x.Activo == true).ToList(); //mostramos solo los usuarios activos, no bloqueados
-
-            }
+            if (radioButton1.Checked)
+                AplicarFiltro();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            if (!radioButton2.Checked)
-            {
-            }
-            else
-            {
-                radioButton1.Checked = false;
-                radioButton3.Checked = false;
-                dataGridView1.DataSource = listaGeneral;
-            }
+            if (radioButton2.Checked)
+                AplicarFiltro();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -730,19 +710,7 @@ rol: (Rol_96_PP)comboBox1.SelectedItem
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton3.Checked)
-            {
-
-                radioButton1.Checked= false;
-                radioButton2.Checked= false;
-
-                dataGridView1.DataSource = listaGeneral.Where(x => x.Bloqueado);
-
-
-            }
-            else
-            {
-                dataGridView1.DataSource= listaGeneral;
-            }
+                AplicarFiltro();
         }
 
         private void button2_Click(object sender, EventArgs e)
