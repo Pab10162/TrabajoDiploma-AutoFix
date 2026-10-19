@@ -32,6 +32,7 @@ namespace SistemaBase.Maestros
         public FormClientes_96_PP(string dniARegistrar)
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             this.dniARegistrar = dniARegistrar;
 
             dgvClientes.CellFormatting += dgvClientes_CellFormatting;

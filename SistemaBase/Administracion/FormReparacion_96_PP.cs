@@ -27,6 +27,7 @@ namespace SistemaBase.Administracion
             Errores = errores;
 
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
 
 
 

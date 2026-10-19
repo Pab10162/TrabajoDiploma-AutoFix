@@ -125,6 +125,7 @@
       <DependentUpon>MenuPrincipal_96_PP.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Tema_96_PP.cs" />
     <Compile Include="Usuario\FormCambiarContraseña_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +222,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Script_TallerMecanico.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Script_Diagnostico.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

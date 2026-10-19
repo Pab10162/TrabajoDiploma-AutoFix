@@ -14,6 +14,7 @@ namespace SistemaBase.Usuario
         public FormCambiarContraseña_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             actualizarIdioma();
             button1.Enabled = TienePermiso(Permisos_96_PP.CambiarContrasena);
         }

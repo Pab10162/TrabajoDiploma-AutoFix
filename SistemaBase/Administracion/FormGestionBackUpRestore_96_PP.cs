@@ -26,6 +26,7 @@ namespace SistemaBase.Administracion
         public FormGestionBackUpRestore_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
 
             SessionManager_96_PP.getInstancia().Suscribir(this);
             actualizarIdioma();

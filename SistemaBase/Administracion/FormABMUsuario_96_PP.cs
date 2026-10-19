@@ -76,6 +76,7 @@ namespace SistemaBase.Administracion
         public FormABMUsuario_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
 
             CargarRoles();
 

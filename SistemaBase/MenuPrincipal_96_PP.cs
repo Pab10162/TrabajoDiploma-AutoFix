@@ -29,6 +29,7 @@ namespace SistemaBase
         public MenuPrincipal_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             SessionManager_96_PP.getInstancia().Suscribir(this);
             SessionManager_96_PP.getInstancia().CierreSistemaSolicitado += CierreSistemaSolicitado;
             actualizarIdioma();
@@ -139,7 +140,6 @@ namespace SistemaBase
             MenuGestionRespaldo.Enabled = false;
             administracionToolStripMenuItem1.Enabled = false;
 
-            // RFN1
             maestrosToolStripMenuItem.Enabled = false;
             clientesToolStripMenuItem.Enabled = false;
             vehiculosToolStripMenuItem.Enabled = false;
@@ -162,14 +162,12 @@ namespace SistemaBase
             MenuGestionRespaldo.Enabled = TieneAlgunPermiso(rol, Permisos_96_PP.RealizarBackup, Permisos_96_PP.RestaurarBackup);
             administracionToolStripMenuItem1.Enabled = TieneAlgunPermiso(rol, Permisos_96_PP.Administracion);
 
-            // RFN1 - Asignar turno de reparación
             clientesToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_96_PP.GestionarClientes);
             vehiculosToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_96_PP.GestionarVehiculos);
             maestrosToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_96_PP.Maestros);
             asignarTurnoToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_96_PP.Turnos);
             turnosToolStripMenuItem.Enabled = TieneAlgunPermiso(rol, Permisos_96_PP.Turnos);
 
-            // A02 - Reporte del RFN1
             reporteTurnosToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_96_PP.ReporteTurnos);
             reportesToolStripMenuItem.Enabled = TienePermiso(rol, Permisos_96_PP.ReporteTurnos);
         }
@@ -199,7 +197,7 @@ namespace SistemaBase
 
             var idiomaOriginal = instance.getUsuarioActivo().Idioma?.tipo;
 
-            if(idiomaActual != idiomaOriginal) //si se cierra sesion con un idioma distinto al original del usuario se lo cambiamos en la db
+            if(idiomaActual != idiomaOriginal) 
             {
                 new BLL_Usuario_96_PP().cambiarIdioma(idiomaActual, instance.getUsuarioActivo().Dni);
 
@@ -216,10 +214,7 @@ namespace SistemaBase
             AplicarEstadoSinSesion();
         }
 
-        private void administracionToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void cambiarContraseñaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -251,7 +246,6 @@ namespace SistemaBase
             AbrirFormulario(new FormGestionBackUpRestore_96_PP());
         }
 
-        // ---------- RFN1 ----------
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {

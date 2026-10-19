@@ -28,6 +28,7 @@ namespace SistemaBase.Turnos
         public FormTurnos_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             SessionManager_96_PP.getInstancia().Suscribir(this);
             actualizarIdioma();
         }
@@ -299,7 +300,8 @@ namespace SistemaBase.Turnos
             BE_Turno_96_PP turno = TurnoSeleccionado();
 
             btnConfirmarTurno.Enabled = puedeAsignar && turno != null &&
-                turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente;
+                turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente &&
+                turno.Fecha >= DateTime.Today;
 
             btnCancelarTurno.Enabled = puedeAsignar && turno != null &&
                 (turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente ||

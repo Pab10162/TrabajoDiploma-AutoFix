@@ -39,6 +39,7 @@ namespace SistemaBase.Maestros
         public FormVehiculos_96_PP(string dniCliente, string patente)
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             dniClienteInicial = dniCliente;
             patenteInicial = patente;
 
@@ -364,7 +365,6 @@ namespace SistemaBase.Maestros
             txtPatente.ReadOnly = !(habilitar && patenteEditable);
             txtMarca.ReadOnly = !habilitar;
             txtModelo.ReadOnly = !habilitar;
-            txtCedula.ReadOnly = !habilitar;
             txtDniCliente.ReadOnly = !habilitar;
             btnBuscarCliente.Enabled = habilitar;
         }
@@ -374,7 +374,6 @@ namespace SistemaBase.Maestros
             txtPatente.Text = v.Patente;
             txtMarca.Text = v.Marca;
             txtModelo.Text = v.Modelo;
-            txtCedula.Text = v.Cedula;
             txtDniCliente.Text = v.Cliente?.Dni;   // primero el texto (dispara TextChanged)...
             clienteDelFormulario = v.Cliente;      // ...después el cliente
             lblNombreCliente.Text = v.NombreCliente;
@@ -396,7 +395,6 @@ namespace SistemaBase.Maestros
             txtPatente.Clear();
             txtMarca.Clear();
             txtModelo.Clear();
-            txtCedula.Clear();
             txtDniCliente.Clear();
             lblNombreCliente.Text = string.Empty;
             clienteDelFormulario = null;
@@ -408,7 +406,6 @@ namespace SistemaBase.Maestros
                 txtPatente.Text,
                 txtMarca.Text,
                 txtModelo.Text,
-                txtCedula.Text,
                 clienteDelFormulario);
         }
 
