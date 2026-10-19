@@ -48,6 +48,12 @@
     <Compile Include="BE_ReporteTurnos_96_PP.cs" />
     <Compile Include="BE_Turno_96_PP.cs" />
     <Compile Include="BE_Vehiculo_96_PP.cs" />
+    <Compile Include="BE_Asistencia_96_PP.cs" />
+    <Compile Include="BE_Cobro_96_PP.cs" />
+    <Compile Include="BE_Diagnostico_96_PP.cs" />
+    <Compile Include="BE_Reparacion_96_PP.cs" />
+    <Compile Include="BE_RepuestoFaltante_96_PP.cs" />
+    <Compile Include="BE_Revision_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

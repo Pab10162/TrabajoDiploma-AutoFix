@@ -54,6 +54,12 @@
     <Compile Include="DAL_Cliente_96_PP.cs" />
     <Compile Include="DAL_Turno_96_PP.cs" />
     <Compile Include="DAL_Vehiculo_96_PP.cs" />
+    <Compile Include="DAL_Asistencia_96_PP.cs" />
+    <Compile Include="DAL_Cobro_96_PP.cs" />
+    <Compile Include="DAL_Diagnostico_96_PP.cs" />
+    <Compile Include="DAL_Reparacion_96_PP.cs" />
+    <Compile Include="DAL_RepuestoFaltante_96_PP.cs" />
+    <Compile Include="DAL_Revision_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
