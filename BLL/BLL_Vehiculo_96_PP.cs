@@ -1,3 +1,6 @@
+using ClassLibrary2;
+using ClassLibrary3;
+using System.Data;
 using BE_96_PP;
 using BE_96_PP;
 using DAL_96_PP;
@@ -9,7 +12,7 @@ namespace BLL
 {
     // RFN1 pasos 4 y 5: verificar si el vehículo existe (por patente) y, si no,
     // registrarlo asociándolo al cliente.
-    public class BLL_Vehiculo_96_PP : BLL_Taller_Comun_96_PP
+    public class BLL_Vehiculo_96_PP
     {
         private const string Tabla = "Vehiculo_56PS";
         private const string Modulo = "Vehiculos";
@@ -114,7 +117,6 @@ namespace BLL
             v.Patente = NormalizarPatente(v.Patente);
             v.Marca = v.Marca?.Trim();
             v.Modelo = v.Modelo?.Trim();
-            v.Cedula = v.Cedula?.Trim();
         }
 
         private void Validar(BE_Vehiculo_96_PP v)
@@ -123,7 +125,7 @@ namespace BLL
                 throw new Exception("Debe completar los datos del vehículo.");
 
             if (string.IsNullOrEmpty(v.Patente) || string.IsNullOrEmpty(v.Marca) ||
-                string.IsNullOrEmpty(v.Modelo) || string.IsNullOrEmpty(v.Cedula))
+                string.IsNullOrEmpty(v.Modelo))
                 throw new Exception("Complete todos los campos");
 
             // Formatos argentinos: AAA999 (viejo) o AA999AA (Mercosur).
@@ -139,6 +141,22 @@ namespace BLL
 
             if (!dueño.Activo)
                 throw new Exception("El cliente está dado de baja.");
+        }
+    
+
+        private void RecalcularDV(string tabla)
+        {
+            DataTable registros = DAL_Comun_96_PP.ConsultarTabla(tabla);
+            new BLL_DigitoVerificador_96_PP().CalcularDV(tabla, registros);
+        }
+
+        private void RegistrarEvento(string modulo, string descripcion, Evento_96_PP.Criticidad criticidad)
+        {
+            var usuario = SessionManager_96_PP.getInstancia().getUsuarioActivo();
+            string dni = usuario?.Dni ?? "Sistema";
+
+            new BLL_BitacoraEvento_96_PP().RegistrarEvento(
+                new Evento_96_PP(dni, DateTime.Now, modulo, descripcion, criticidad));
         }
     }
 }

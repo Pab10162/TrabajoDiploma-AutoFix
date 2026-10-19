@@ -129,6 +129,17 @@ namespace DAL
                 }
             }
 
+            // RFN2 - Tablas de diagnóstico, reparación y cobro.
+            if (!ExisteTabla("Asistencia_56PS"))
+            {
+                string rutaScriptDiagnostico = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Script_Diagnostico.sql");
+                if (File.Exists(rutaScriptDiagnostico))
+                {
+                    DAL_96_PP.DAL_Comun_96_PP.EjecutarScript(rutaScriptDiagnostico);
+                    scriptEjecutado = true;
+                }
+            }
+
             if (primeraEjecucionInstalador)
             {
                 File.Delete(rutaPrimeraVez);

@@ -8,7 +8,6 @@ namespace BE_96_PP
         public string Patente { get; set; }
         public string Marca { get; set; }
         public string Modelo { get; set; }
-        public string Cedula { get; set; }
         public BE_Cliente_96_PP Cliente { get; set; }
         public bool Activo { get; set; }
 
@@ -20,12 +19,11 @@ namespace BE_96_PP
             Activo = true;
         }
 
-        public BE_Vehiculo_96_PP(string patente, string marca, string modelo, string cedula, BE_Cliente_96_PP cliente, bool activo = true)
+        public BE_Vehiculo_96_PP(string patente, string marca, string modelo, BE_Cliente_96_PP cliente, bool activo = true)
         {
             Patente = patente;
             Marca = marca;
             Modelo = modelo;
-            Cedula = cedula;
             Cliente = cliente;
             Activo = activo;
         }

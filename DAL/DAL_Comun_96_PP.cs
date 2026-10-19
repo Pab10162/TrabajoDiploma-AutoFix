@@ -26,7 +26,15 @@ namespace DAL_96_PP
             // RFN1 - Taller mecánico
             { "Cliente_56PS", "DNI" },
             { "Vehiculo_56PS", "Patente" },
-            { "Turno_56PS", "IdTurno" }
+            { "Turno_56PS", "IdTurno" },
+
+            // RFN2 - Diagnóstico, reparación y cobro
+            { "Asistencia_56PS", "IdAsistencia" },
+            { "Revision_56PS", "IdRevision" },
+            { "Diagnostico_56PS", "IdDiagnostico" },
+            { "RepuestoFaltante_56PS", "IdFaltante" },
+            { "Reparacion_56PS", "IdReparacion" },
+            { "Cobro_56PS", "IdCobro" }
         };
 
 

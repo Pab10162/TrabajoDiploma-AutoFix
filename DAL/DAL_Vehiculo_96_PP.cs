@@ -12,7 +12,7 @@ namespace DAL_96_PP
     public class DAL_Vehiculo_96_PP
     {
         private const string SelectBase = @"
-            SELECT V.Patente, V.Marca, V.Modelo, V.Cedula, V.Activo,
+            SELECT V.Patente, V.Marca, V.Modelo, V.Activo,
                    C.DNI AS Cli_DNI, C.Nombre AS Cli_Nombre, C.Apellido AS Cli_Apellido,
                    C.Telefono AS Cli_Telefono, C.Direccion AS Cli_Direccion, C.Activo AS Cli_Activo
             FROM dbo.Vehiculo_56PS V
@@ -20,8 +20,8 @@ namespace DAL_96_PP
 
         public void Crear(BE_Vehiculo_96_PP vehiculo)
         {
-            string query = @"INSERT INTO dbo.Vehiculo_56PS (Patente, Marca, Modelo, Cedula, DNI_Cliente, Activo)
-                             VALUES (@Patente, @Marca, @Modelo, @Cedula, @DNI_Cliente, @Activo)";
+            string query = @"INSERT INTO dbo.Vehiculo_56PS (Patente, Marca, Modelo, DNI_Cliente, Activo)
+                             VALUES (@Patente, @Marca, @Modelo, @DNI_Cliente, @Activo)";
             DAL_Comun_96_PP.ExecuteNonQuery(query, Parametros(vehiculo));
         }
 
@@ -30,7 +30,6 @@ namespace DAL_96_PP
             string query = @"UPDATE dbo.Vehiculo_56PS SET
                                 Marca = @Marca,
                                 Modelo = @Modelo,
-                                Cedula = @Cedula,
                                 DNI_Cliente = @DNI_Cliente,
                                 Activo = @Activo
                              WHERE Patente = @Patente";
@@ -81,7 +80,6 @@ namespace DAL_96_PP
                 new SqlParameter("@Patente", v.Patente),
                 new SqlParameter("@Marca", v.Marca),
                 new SqlParameter("@Modelo", v.Modelo),
-                new SqlParameter("@Cedula", (object)v.Cedula ?? DBNull.Value),
                 new SqlParameter("@DNI_Cliente", v.Cliente.Dni),
                 new SqlParameter("@Activo", v.Activo)
             };
@@ -95,7 +93,6 @@ namespace DAL_96_PP
                 fila[prefijo + "Patente"].ToString(),
                 fila[prefijo + "Marca"].ToString(),
                 fila[prefijo + "Modelo"].ToString(),
-                fila[prefijo + "Cedula"] == DBNull.Value ? null : fila[prefijo + "Cedula"].ToString(),
                 cliente,
                 Convert.ToBoolean(fila[prefijo + "Activo"]));
         }

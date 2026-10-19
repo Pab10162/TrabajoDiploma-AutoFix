@@ -113,7 +113,6 @@ namespace SistemaBase
             this.administracionToolStripMenuItem1.Size = new System.Drawing.Size(100, 20);
             this.administracionToolStripMenuItem1.Tag = "administracionMenu";
             this.administracionToolStripMenuItem1.Text = "Administracion";
-            this.administracionToolStripMenuItem1.Click += new System.EventHandler(this.administracionToolStripMenuItem1_Click);
             // 
             // auditoriaDeEventosToolStripMenuItem
             // 

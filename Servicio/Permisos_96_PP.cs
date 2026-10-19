@@ -38,8 +38,16 @@ namespace Servicio
         public const string AsignarTurno = "P62";
         public const string ConsultarTurnos = "P63";
 
-        // A02 - Reporte del RFN1
         public const string ReporteTurnos = "P64";
+
+        // RFN2 - Registrar diagnóstico del vehículo
+        public const string RegistrarAsistencia = "P65";
+        public const string RegistrarRevision = "P66";
+        public const string RegistrarDiagnostico = "P67";
+        public const string RegistrarReparacion = "P68";
+        public const string RegistrarCobro = "P69";
+
+        public const string ReporteDiagnosticos = "P70";
 
         public static readonly string[] Maestros =
         {
@@ -51,6 +59,15 @@ namespace Servicio
         {
             AsignarTurno,
             ConsultarTurnos
+        };
+
+        public static readonly string[] Diagnostico =
+        {
+            RegistrarAsistencia,
+            RegistrarRevision,
+            RegistrarDiagnostico,
+            RegistrarReparacion,
+            RegistrarCobro
         };
 
         public static readonly string[] Usuarios =

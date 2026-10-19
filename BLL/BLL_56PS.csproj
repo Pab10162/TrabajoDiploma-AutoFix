@@ -62,7 +62,6 @@
     <Compile Include="BLL_Usuario_96_PP.cs" />
     <Compile Include="BLL_Cliente_96_PP.cs" />
     <Compile Include="BLL_ReporteTurnos_96_PP.cs" />
-    <Compile Include="BLL_Taller_Comun_96_PP.cs" />
     <Compile Include="BLL_Turno_96_PP.cs" />
     <Compile Include="BLL_Vehiculo_96_PP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
