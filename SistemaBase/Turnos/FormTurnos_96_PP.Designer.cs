@@ -47,16 +47,18 @@ namespace SistemaBase.Turnos
             this.lblAgenda = new System.Windows.Forms.Label();
             this.dtpFiltro = new System.Windows.Forms.DateTimePicker();
             this.chkTodasLasFechas = new System.Windows.Forms.CheckBox();
+            this.lblEstadoFiltro = new System.Windows.Forms.Label();
+            this.cmbEstadoFiltro = new System.Windows.Forms.ComboBox();
             this.dgvTurnos = new System.Windows.Forms.DataGridView();
             this.btnConfirmarTurno = new System.Windows.Forms.Button();
             this.btnCancelarTurno = new System.Windows.Forms.Button();
             this.btnExportarTurno = new System.Windows.Forms.Button();
             this.btnImportarTurno = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).BeginInit();
             this.grpCliente.SuspendLayout();
             this.grpVehiculo.SuspendLayout();
             this.grpTurno.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).BeginInit();
             this.SuspendLayout();
             // 
             // grpCliente
@@ -86,8 +88,8 @@ namespace SistemaBase.Turnos
             // 
             // txtDniCliente
             // 
-            this.txtDniCliente.MaxLength = 8;
             this.txtDniCliente.Location = new System.Drawing.Point(60, 25);
+            this.txtDniCliente.MaxLength = 8;
             this.txtDniCliente.Name = "txtDniCliente";
             this.txtDniCliente.Size = new System.Drawing.Size(140, 20);
             this.txtDniCliente.TabIndex = 1;
@@ -117,12 +119,10 @@ namespace SistemaBase.Turnos
             // 
             // lblDatosCliente
             // 
-            this.lblDatosCliente.AutoSize = false;
             this.lblDatosCliente.Location = new System.Drawing.Point(15, 60);
             this.lblDatosCliente.Name = "lblDatosCliente";
             this.lblDatosCliente.Size = new System.Drawing.Size(440, 40);
             this.lblDatosCliente.TabIndex = 4;
-            this.lblDatosCliente.Text = "";
             // 
             // grpVehiculo
             // 
@@ -236,7 +236,7 @@ namespace SistemaBase.Turnos
             this.lblAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.lblAgenda.Location = new System.Drawing.Point(12, 232);
             this.lblAgenda.Name = "lblAgenda";
-            this.lblAgenda.Size = new System.Drawing.Size(105, 13);
+            this.lblAgenda.Size = new System.Drawing.Size(107, 13);
             this.lblAgenda.TabIndex = 3;
             this.lblAgenda.Tag = "agendaLabel";
             this.lblAgenda.Text = "Agenda de turnos";
@@ -255,26 +255,47 @@ namespace SistemaBase.Turnos
             this.chkTodasLasFechas.AutoSize = true;
             this.chkTodasLasFechas.Location = new System.Drawing.Point(285, 230);
             this.chkTodasLasFechas.Name = "chkTodasLasFechas";
-            this.chkTodasLasFechas.Size = new System.Drawing.Size(108, 17);
+            this.chkTodasLasFechas.Size = new System.Drawing.Size(107, 17);
             this.chkTodasLasFechas.TabIndex = 5;
             this.chkTodasLasFechas.Tag = "todasLasFechasCheckBox";
             this.chkTodasLasFechas.Text = "Todas las fechas";
             this.chkTodasLasFechas.UseVisualStyleBackColor = true;
             this.chkTodasLasFechas.CheckedChanged += new System.EventHandler(this.chkTodasLasFechas_CheckedChanged);
             // 
+            // lblEstadoFiltro
+            // 
+            this.lblEstadoFiltro.AutoSize = true;
+            this.lblEstadoFiltro.Location = new System.Drawing.Point(410, 232);
+            this.lblEstadoFiltro.Name = "lblEstadoFiltro";
+            this.lblEstadoFiltro.Size = new System.Drawing.Size(40, 13);
+            this.lblEstadoFiltro.TabIndex = 12;
+            this.lblEstadoFiltro.Tag = "estadoFiltroLabel";
+            this.lblEstadoFiltro.Text = "Estado";
+            // 
+            // cmbEstadoFiltro
+            // 
+            this.cmbEstadoFiltro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEstadoFiltro.FormattingEnabled = true;
+            this.cmbEstadoFiltro.Location = new System.Drawing.Point(460, 228);
+            this.cmbEstadoFiltro.Name = "cmbEstadoFiltro";
+            this.cmbEstadoFiltro.Size = new System.Drawing.Size(140, 21);
+            this.cmbEstadoFiltro.TabIndex = 13;
+            this.cmbEstadoFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbEstadoFiltro_SelectedIndexChanged);
+            // 
             // dgvTurnos
             // 
             this.dgvTurnos.AllowUserToAddRows = false;
             this.dgvTurnos.AllowUserToDeleteRows = false;
+            this.dgvTurnos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvTurnos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTurnos.Location = new System.Drawing.Point(12, 255);
             this.dgvTurnos.MultiSelect = false;
+            this.dgvTurnos.Name = "dgvTurnos";
             this.dgvTurnos.ReadOnly = true;
             this.dgvTurnos.RowHeadersVisible = false;
             this.dgvTurnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTurnos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTurnos.Location = new System.Drawing.Point(12, 255);
-            this.dgvTurnos.Name = "dgvTurnos";
             this.dgvTurnos.Size = new System.Drawing.Size(768, 200);
             this.dgvTurnos.TabIndex = 6;
             this.dgvTurnos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvTurnos_DataBindingComplete);
@@ -301,29 +322,29 @@ namespace SistemaBase.Turnos
             this.btnCancelarTurno.Text = "Cancelar turno";
             this.btnCancelarTurno.UseVisualStyleBackColor = true;
             this.btnCancelarTurno.Click += new System.EventHandler(this.btnCancelarTurno_Click);
-            //
+            // 
             // btnExportarTurno
-            //
+            // 
             this.btnExportarTurno.Location = new System.Drawing.Point(330, 465);
             this.btnExportarTurno.Name = "btnExportarTurno";
             this.btnExportarTurno.Size = new System.Drawing.Size(140, 28);
             this.btnExportarTurno.TabIndex = 9;
             this.btnExportarTurno.Tag = "exportarTurnoButton";
-            this.btnExportarTurno.Text = "Exportar turno (XML)";
+            this.btnExportarTurno.Text = "Exportar turno ";
             this.btnExportarTurno.UseVisualStyleBackColor = true;
             this.btnExportarTurno.Click += new System.EventHandler(this.btnExportarTurno_Click);
-            //
+            // 
             // btnImportarTurno
-            //
+            // 
             this.btnImportarTurno.Location = new System.Drawing.Point(480, 465);
             this.btnImportarTurno.Name = "btnImportarTurno";
             this.btnImportarTurno.Size = new System.Drawing.Size(140, 28);
             this.btnImportarTurno.TabIndex = 10;
             this.btnImportarTurno.Tag = "importarTurnoButton";
-            this.btnImportarTurno.Text = "Importar turno (XML)";
+            this.btnImportarTurno.Text = "Importar turno ";
             this.btnImportarTurno.UseVisualStyleBackColor = true;
             this.btnImportarTurno.Click += new System.EventHandler(this.btnImportarTurno_Click);
-            //
+            // 
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(630, 465);
@@ -337,7 +358,6 @@ namespace SistemaBase.Turnos
             // 
             // FormTurnos_96_PP
             // 
-            this.Text = "Turnos";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(794, 506);
@@ -347,6 +367,8 @@ namespace SistemaBase.Turnos
             this.Controls.Add(this.lblAgenda);
             this.Controls.Add(this.dtpFiltro);
             this.Controls.Add(this.chkTodasLasFechas);
+            this.Controls.Add(this.lblEstadoFiltro);
+            this.Controls.Add(this.cmbEstadoFiltro);
             this.Controls.Add(this.dgvTurnos);
             this.Controls.Add(this.btnConfirmarTurno);
             this.Controls.Add(this.btnCancelarTurno);
@@ -354,14 +376,15 @@ namespace SistemaBase.Turnos
             this.Controls.Add(this.btnImportarTurno);
             this.Controls.Add(this.btnSalir);
             this.Name = "FormTurnos_96_PP";
+            this.Text = "Turnos";
             this.Load += new System.EventHandler(this.FormTurnos_96_PP_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).EndInit();
             this.grpCliente.ResumeLayout(false);
             this.grpCliente.PerformLayout();
             this.grpVehiculo.ResumeLayout(false);
             this.grpVehiculo.PerformLayout();
             this.grpTurno.ResumeLayout(false);
             this.grpTurno.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTurnos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,6 +411,8 @@ namespace SistemaBase.Turnos
         private System.Windows.Forms.Label lblAgenda;
         private System.Windows.Forms.DateTimePicker dtpFiltro;
         private System.Windows.Forms.CheckBox chkTodasLasFechas;
+        private System.Windows.Forms.Label lblEstadoFiltro;
+        private System.Windows.Forms.ComboBox cmbEstadoFiltro;
         private System.Windows.Forms.DataGridView dgvTurnos;
         private System.Windows.Forms.Button btnConfirmarTurno;
         private System.Windows.Forms.Button btnCancelarTurno;

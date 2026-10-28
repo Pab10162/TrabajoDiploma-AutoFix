@@ -20,6 +20,7 @@ namespace SistemaBase.Usuario
         public FormCambiarIdioma_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             SessionManager_96_PP.getInstancia().Suscribir(this);
             CargarIdiomas();
             button1.Enabled = TienePermiso(Permisos_96_PP.CambiarIdioma);

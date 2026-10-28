@@ -12,14 +12,13 @@ namespace DAL_96_PP
         private const string SelectBase = @"
             SELECT T.IdTurno, T.Fecha, T.Horario, T.Estado, T.DNI_Mecanico,
                    V.Patente AS Veh_Patente, V.Marca AS Veh_Marca, V.Modelo AS Veh_Modelo,
-                   V.Cedula AS Veh_Cedula, V.Activo AS Veh_Activo,
+                   V.Activo AS Veh_Activo,
                    C.DNI AS Cli_DNI, C.Nombre AS Cli_Nombre, C.Apellido AS Cli_Apellido,
                    C.Telefono AS Cli_Telefono, C.Direccion AS Cli_Direccion, C.Activo AS Cli_Activo
             FROM dbo.Turno_56PS T
             INNER JOIN dbo.Vehiculo_56PS V ON V.Patente = T.Patente_Vehiculo
             INNER JOIN dbo.Cliente_56PS C ON C.DNI = T.DNI_Cliente";
 
-        // Devuelve el Id generado (IDENTITY) para poder registrarlo en la bitácora.
         public int Crear(BE_Turno_96_PP turno)
         {
             string query = @"INSERT INTO dbo.Turno_56PS (Fecha, Horario, Estado, DNI_Cliente, Patente_Vehiculo, DNI_Mecanico)
@@ -46,6 +45,17 @@ namespace DAL_96_PP
                 new[]
                 {
                     new SqlParameter("@Estado", nuevoEstado.ToString()),
+                    new SqlParameter("@Id", idTurno)
+                });
+        }
+
+        public void AsignarMecanico(int idTurno, string dniMecanico)
+        {
+            DAL_Comun_96_PP.ExecuteNonQuery(
+                "UPDATE dbo.Turno_56PS SET DNI_Mecanico = @Mecanico WHERE IdTurno = @Id",
+                new[]
+                {
+                    new SqlParameter("@Mecanico", dniMecanico),
                     new SqlParameter("@Id", idTurno)
                 });
         }
@@ -81,21 +91,6 @@ namespace DAL_96_PP
             foreach (DataRow fila in ds.Tables[0].Rows)
                 ocupados.Add((TimeSpan)fila["Horario"]);
             return ocupados;
-        }
-
-        // ¿El vehículo ya tiene un turno vigente (Pendiente/Confirmado) ese día?
-        public bool VehiculoTieneTurnoVigente(string patente, DateTime fecha)
-        {
-            object resultado = DAL_Comun_96_PP.ExecuteScalar(
-                @"SELECT COUNT(*) FROM dbo.Turno_56PS
-                  WHERE Patente_Vehiculo = @Patente AND Fecha = @Fecha
-                    AND Estado IN ('Pendiente', 'Confirmado')",
-                new[]
-                {
-                    new SqlParameter("@Patente", patente),
-                    new SqlParameter("@Fecha", SqlDbType.Date) { Value = fecha.Date }
-                });
-            return Convert.ToInt32(resultado) > 0;
         }
 
         // ¿Tiene turnos vigentes (Pendiente o Confirmado) de hoy en adelante?

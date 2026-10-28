@@ -40,7 +40,6 @@ BEGIN
         Patente      VARCHAR(7)    NOT NULL,
         Marca        NVARCHAR(50)  NOT NULL,
         Modelo       NVARCHAR(50)  NOT NULL,
-        Cedula       VARCHAR(30)   NOT NULL,
         DNI_Cliente  VARCHAR(8)    NOT NULL,
         Activo       BIT           NOT NULL CONSTRAINT DF_Vehiculo_56PS_Activo DEFAULT (1),
         CONSTRAINT PK_Vehiculo_56PS PRIMARY KEY (Patente),

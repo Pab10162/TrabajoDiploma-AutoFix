@@ -1,3 +1,6 @@
+using ClassLibrary2;
+using ClassLibrary3;
+using System.Data;
 using BE_96_PP;
 using BE_96_PP;
 using DAL_96_PP;
@@ -10,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace BLL
 {
-    public class BLL_Turno_96_PP : BLL_Taller_Comun_96_PP
+    public class BLL_Turno_96_PP
     {
         private const string Tabla = "Turno_56PS";
         private const string Modulo = "Turnos";
@@ -73,9 +76,6 @@ namespace BLL
 
             if (!ObtenerHorariosDisponibles(fecha).Contains(horario))
                 throw new Exception("El horario seleccionado no está disponible.");
-
-            if (dal.VehiculoTieneTurnoVigente(vehiculo.Patente, fecha))
-                throw new Exception("El vehículo ya tiene un turno vigente para esa fecha.");
 
             BE_Turno_96_PP turno = new BE_Turno_96_PP(fecha, horario, cliente, vehiculo);
 
@@ -142,8 +142,12 @@ namespace BLL
             if (!estadosPermitidos.Contains(actual.Estado))
                 throw new Exception("El turno no se puede pasar a ese estado.");
 
-            if (actual.Fecha < DateTime.Today)
-                throw new Exception("No se puede modificar un turno de una fecha pasada.");
+            // Solo tiene sentido bloquear por fecha pasada al confirmar (no se confirma
+            // un turno que ya pasó). Cancelar un turno de una fecha pasada siempre debe
+            // poder hacerse: es la forma de liberar/"limpiar" pendientes viejos que
+            // quedaron sin atender.
+            if (nuevo == BE_Turno_96_PP.EstadoTurno.Confirmado && actual.Fecha < DateTime.Today)
+                throw new Exception("No se puede confirmar un turno de una fecha pasada.");
 
             dal.CambiarEstado(actual.IdTurno, nuevo);
             turno.Estado = nuevo;
@@ -152,6 +156,22 @@ namespace BLL
             RegistrarEvento(Modulo,
                 $"Turno #{actual.IdTurno}: {actual.Estado} -> {nuevo}",
                 nuevo == BE_Turno_96_PP.EstadoTurno.Cancelado ? Evento_96_PP.Criticidad.Medio : Evento_96_PP.Criticidad.Bajo);
+        }
+    
+
+        private void RecalcularDV(string tabla)
+        {
+            DataTable registros = DAL_Comun_96_PP.ConsultarTabla(tabla);
+            new BLL_DigitoVerificador_96_PP().CalcularDV(tabla, registros);
+        }
+
+        private void RegistrarEvento(string modulo, string descripcion, Evento_96_PP.Criticidad criticidad)
+        {
+            var usuario = SessionManager_96_PP.getInstancia().getUsuarioActivo();
+            string dni = usuario?.Dni ?? "Sistema";
+
+            new BLL_BitacoraEvento_96_PP().RegistrarEvento(
+                new Evento_96_PP(dni, DateTime.Now, modulo, descripcion, criticidad));
         }
     }
 }

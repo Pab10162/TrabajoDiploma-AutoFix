@@ -45,6 +45,12 @@ namespace SistemaBase
             this.vehiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarTurnoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diagnosticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarAsistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarRevisionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarDiagnosticoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarReparacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarCobroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -57,6 +63,7 @@ namespace SistemaBase
             this.administracionToolStripMenuItem1,
             this.maestrosToolStripMenuItem,
             this.turnosToolStripMenuItem,
+            this.diagnosticoToolStripMenuItem,
             this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -113,7 +120,6 @@ namespace SistemaBase
             this.administracionToolStripMenuItem1.Size = new System.Drawing.Size(100, 20);
             this.administracionToolStripMenuItem1.Tag = "administracionMenu";
             this.administracionToolStripMenuItem1.Text = "Administracion";
-            this.administracionToolStripMenuItem1.Click += new System.EventHandler(this.administracionToolStripMenuItem1_Click);
             // 
             // auditoriaDeEventosToolStripMenuItem
             // 
@@ -206,6 +212,59 @@ namespace SistemaBase
             this.asignarTurnoToolStripMenuItem.Text = "Asignar turno";
             this.asignarTurnoToolStripMenuItem.Click += new System.EventHandler(this.asignarTurnoToolStripMenuItem_Click);
             // 
+            // diagnosticoToolStripMenuItem
+            // 
+            this.diagnosticoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registrarAsistenciaToolStripMenuItem,
+            this.registrarRevisionToolStripMenuItem,
+            this.registrarDiagnosticoToolStripMenuItem,
+            this.registrarReparacionToolStripMenuItem,
+            this.registrarCobroToolStripMenuItem});
+            this.diagnosticoToolStripMenuItem.Name = "diagnosticoToolStripMenuItem";
+            this.diagnosticoToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.diagnosticoToolStripMenuItem.Tag = "diagnosticoMenu";
+            this.diagnosticoToolStripMenuItem.Text = "Diagnóstico";
+            // 
+            // registrarAsistenciaToolStripMenuItem
+            // 
+            this.registrarAsistenciaToolStripMenuItem.Name = "registrarAsistenciaToolStripMenuItem";
+            this.registrarAsistenciaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.registrarAsistenciaToolStripMenuItem.Tag = "rfn2MenuAsistencia";
+            this.registrarAsistenciaToolStripMenuItem.Text = "Registrar asistencia";
+            this.registrarAsistenciaToolStripMenuItem.Click += new System.EventHandler(this.registrarAsistenciaToolStripMenuItem_Click);
+            // 
+            // registrarRevisionToolStripMenuItem
+            // 
+            this.registrarRevisionToolStripMenuItem.Name = "registrarRevisionToolStripMenuItem";
+            this.registrarRevisionToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.registrarRevisionToolStripMenuItem.Tag = "rfn2MenuRevision";
+            this.registrarRevisionToolStripMenuItem.Text = "Registrar revisión";
+            this.registrarRevisionToolStripMenuItem.Click += new System.EventHandler(this.registrarRevisionToolStripMenuItem_Click);
+            // 
+            // registrarDiagnosticoToolStripMenuItem
+            // 
+            this.registrarDiagnosticoToolStripMenuItem.Name = "registrarDiagnosticoToolStripMenuItem";
+            this.registrarDiagnosticoToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.registrarDiagnosticoToolStripMenuItem.Tag = "rfn2MenuDiagnostico";
+            this.registrarDiagnosticoToolStripMenuItem.Text = "Registrar diagnóstico";
+            this.registrarDiagnosticoToolStripMenuItem.Click += new System.EventHandler(this.registrarDiagnosticoToolStripMenuItem_Click);
+            // 
+            // registrarReparacionToolStripMenuItem
+            // 
+            this.registrarReparacionToolStripMenuItem.Name = "registrarReparacionToolStripMenuItem";
+            this.registrarReparacionToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.registrarReparacionToolStripMenuItem.Tag = "rfn2MenuReparacion";
+            this.registrarReparacionToolStripMenuItem.Text = "Registrar reparación";
+            this.registrarReparacionToolStripMenuItem.Click += new System.EventHandler(this.registrarReparacionToolStripMenuItem_Click);
+            // 
+            // registrarCobroToolStripMenuItem
+            // 
+            this.registrarCobroToolStripMenuItem.Name = "registrarCobroToolStripMenuItem";
+            this.registrarCobroToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.registrarCobroToolStripMenuItem.Tag = "rfn2MenuCobro";
+            this.registrarCobroToolStripMenuItem.Text = "Registrar cobro";
+            this.registrarCobroToolStripMenuItem.Click += new System.EventHandler(this.registrarCobroToolStripMenuItem_Click);
+            // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -262,5 +321,11 @@ namespace SistemaBase
         private System.Windows.Forms.ToolStripMenuItem asignarTurnoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteTurnosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem diagnosticoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarAsistenciaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarRevisionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarDiagnosticoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarReparacionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarCobroToolStripMenuItem;
     }
 }

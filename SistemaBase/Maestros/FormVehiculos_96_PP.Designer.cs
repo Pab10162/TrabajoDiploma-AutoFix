@@ -40,8 +40,6 @@ namespace SistemaBase.Maestros
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.lblModelo = new System.Windows.Forms.Label();
             this.txtModelo = new System.Windows.Forms.TextBox();
-            this.lblCedula = new System.Windows.Forms.Label();
-            this.txtCedula = new System.Windows.Forms.TextBox();
             this.lblDniCliente = new System.Windows.Forms.Label();
             this.txtDniCliente = new System.Windows.Forms.TextBox();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
@@ -127,15 +125,13 @@ namespace SistemaBase.Maestros
             this.grpDatos.Controls.Add(this.txtMarca);
             this.grpDatos.Controls.Add(this.lblModelo);
             this.grpDatos.Controls.Add(this.txtModelo);
-            this.grpDatos.Controls.Add(this.lblCedula);
-            this.grpDatos.Controls.Add(this.txtCedula);
             this.grpDatos.Controls.Add(this.lblDniCliente);
             this.grpDatos.Controls.Add(this.txtDniCliente);
             this.grpDatos.Controls.Add(this.btnBuscarCliente);
             this.grpDatos.Controls.Add(this.lblNombreCliente);
             this.grpDatos.Location = new System.Drawing.Point(12, 305);
             this.grpDatos.Name = "grpDatos";
-            this.grpDatos.Size = new System.Drawing.Size(400, 200);
+            this.grpDatos.Size = new System.Drawing.Size(400, 170);
             this.grpDatos.TabIndex = 5;
             this.grpDatos.TabStop = false;
             this.grpDatos.Tag = "datosVehiculoGroup";
@@ -196,61 +192,43 @@ namespace SistemaBase.Maestros
             this.txtModelo.Size = new System.Drawing.Size(270, 20);
             this.txtModelo.TabIndex = 5;
             // 
-            // lblCedula
-            // 
-            this.lblCedula.AutoSize = true;
-            this.lblCedula.Location = new System.Drawing.Point(15, 120);
-            this.lblCedula.Name = "lblCedula";
-            this.lblCedula.Size = new System.Drawing.Size(40, 13);
-            this.lblCedula.TabIndex = 6;
-            this.lblCedula.Tag = "cedulaLabel";
-            this.lblCedula.Text = "Cédula";
-            // 
-            // txtCedula
-            // 
-            this.txtCedula.MaxLength = 30;
-            this.txtCedula.Location = new System.Drawing.Point(110, 117);
-            this.txtCedula.Name = "txtCedula";
-            this.txtCedula.Size = new System.Drawing.Size(270, 20);
-            this.txtCedula.TabIndex = 7;
-            // 
             // lblDniCliente
-            // 
+            //
             this.lblDniCliente.AutoSize = true;
-            this.lblDniCliente.Location = new System.Drawing.Point(15, 150);
+            this.lblDniCliente.Location = new System.Drawing.Point(15, 120);
             this.lblDniCliente.Name = "lblDniCliente";
             this.lblDniCliente.Size = new System.Drawing.Size(62, 13);
-            this.lblDniCliente.TabIndex = 8;
+            this.lblDniCliente.TabIndex = 6;
             this.lblDniCliente.Tag = "dniClienteLabel";
             this.lblDniCliente.Text = "DNI cliente";
-            // 
+            //
             // txtDniCliente
-            // 
+            //
             this.txtDniCliente.MaxLength = 8;
-            this.txtDniCliente.Location = new System.Drawing.Point(110, 147);
+            this.txtDniCliente.Location = new System.Drawing.Point(110, 117);
             this.txtDniCliente.Name = "txtDniCliente";
             this.txtDniCliente.Size = new System.Drawing.Size(170, 20);
-            this.txtDniCliente.TabIndex = 9;
+            this.txtDniCliente.TabIndex = 7;
             this.txtDniCliente.TextChanged += new System.EventHandler(this.txtDniCliente_TextChanged);
-            // 
+            //
             // btnBuscarCliente
-            // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(290, 145);
+            //
+            this.btnBuscarCliente.Location = new System.Drawing.Point(290, 115);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(90, 23);
-            this.btnBuscarCliente.TabIndex = 10;
+            this.btnBuscarCliente.TabIndex = 8;
             this.btnBuscarCliente.Tag = "buscarButton";
             this.btnBuscarCliente.Text = "Buscar";
             this.btnBuscarCliente.UseVisualStyleBackColor = true;
             this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
-            // 
+            //
             // lblNombreCliente
-            // 
+            //
             this.lblNombreCliente.AutoSize = false;
-            this.lblNombreCliente.Location = new System.Drawing.Point(110, 175);
+            this.lblNombreCliente.Location = new System.Drawing.Point(110, 145);
             this.lblNombreCliente.Name = "lblNombreCliente";
             this.lblNombreCliente.Size = new System.Drawing.Size(270, 13);
-            this.lblNombreCliente.TabIndex = 11;
+            this.lblNombreCliente.TabIndex = 9;
             this.lblNombreCliente.Text = "";
             // 
             // lblModo
@@ -373,8 +351,6 @@ namespace SistemaBase.Maestros
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.Label lblModelo;
         private System.Windows.Forms.TextBox txtModelo;
-        private System.Windows.Forms.Label lblCedula;
-        private System.Windows.Forms.TextBox txtCedula;
         private System.Windows.Forms.Label lblDniCliente;
         private System.Windows.Forms.TextBox txtDniCliente;
         private System.Windows.Forms.Button btnBuscarCliente;

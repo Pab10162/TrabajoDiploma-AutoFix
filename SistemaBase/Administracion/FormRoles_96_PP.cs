@@ -26,6 +26,7 @@ namespace SistemaBase.Administracion
         public FormRoles_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
 
             cmbpermiso.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbfa.DropDownStyle = ComboBoxStyle.DropDownList;

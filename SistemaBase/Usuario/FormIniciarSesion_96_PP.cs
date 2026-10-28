@@ -1,5 +1,4 @@
 using BE_96_PP;
-using BE_96_PP;
 using BLL;
 using ClassLibrary2;
 using ClassLibrary3;
@@ -18,6 +17,7 @@ namespace SistemaBase
         public FormIniciarSesion_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             SessionManager_96_PP.getInstancia().Suscribir(this);
             actualizarIdioma();
         }
@@ -190,9 +190,12 @@ namespace SistemaBase
             if (ultimoCambio == null)
                 return true;
 
+            // El evento "Desbloqueo de usuario DNI x" se guarda con el DNI de quien desbloquea
+            // (el administrador), y el DNI del usuario desbloqueado va en la descripción.
+            // Por eso se compara contra la descripción y no contra evento.dni.
+            string descripcionDesbloqueo = $"Desbloqueo de usuario DNI {dniUsuario}";
             return eventos.Any(evento =>
-                evento.descripcion.Contains("Desbloqueo de usuario") &&
-                evento.dni.Contains(dniUsuario) &&
+                evento.descripcion == descripcionDesbloqueo &&
                 evento.fecha > ultimoCambio.fecha);
         }
 

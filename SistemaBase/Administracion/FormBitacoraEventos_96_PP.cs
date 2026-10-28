@@ -31,6 +31,7 @@ namespace GUI_96_PP.Administracion
         public FormBitacoraEventos_96_PP()
         {
             InitializeComponent();
+            SistemaBase.Tema_96_PP.Aplicar(this);
 
             eventos = new BLL_BitacoraEvento_96_PP().obtenerEventos()
                 .Where(ev => ev.fecha >= DateTime.Today.AddDays(-3))

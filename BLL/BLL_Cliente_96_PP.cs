@@ -1,3 +1,6 @@
+using ClassLibrary2;
+using ClassLibrary3;
+using System.Data;
 using BE_96_PP;
 using BE_96_PP;
 using DAL_96_PP;
@@ -8,7 +11,7 @@ using System.Linq;
 namespace BLL
 {
     // RFN1 pasos 2 y 3: verificar si el cliente existe (por DNI) y, si no, registrarlo.
-    public class BLL_Cliente_96_PP : BLL_Taller_Comun_96_PP
+    public class BLL_Cliente_96_PP
     {
         private const string Tabla = "Cliente_56PS";
         private const string Modulo = "Clientes";
@@ -131,6 +134,35 @@ namespace BLL
 
             int digitos = telefono.Count(char.IsDigit);
             return digitos >= 6 && digitos <= 15;
+        }
+    
+
+        private void RecalcularDV(string tabla)
+        {
+            DataTable registros = DAL_Comun_96_PP.ConsultarTabla(tabla);
+            new BLL_DigitoVerificador_96_PP().CalcularDV(tabla, registros);
+        }
+
+        private void RegistrarEvento(string modulo, string descripcion, Evento_96_PP.Criticidad criticidad)
+        {
+            var usuario = SessionManager_96_PP.getInstancia().getUsuarioActivo();
+            string dni = usuario?.Dni ?? "Sistema";
+
+            new BLL_BitacoraEvento_96_PP().RegistrarEvento(
+                new Evento_96_PP(dni, DateTime.Now, modulo, descripcion, criticidad));
+        }
+
+        private static bool EsSoloDigitos(string texto)
+        {
+            if (string.IsNullOrEmpty(texto))
+                return false;
+
+            foreach (char c in texto)
+            {
+                if (!char.IsDigit(c))
+                    return false;
+            }
+            return true;
         }
     }
 }

@@ -1,3 +1,4 @@
+using ClassLibrary3;
 using BE_96_PP;
 using BE_96_PP;
 using ClassLibrary2;
@@ -12,7 +13,7 @@ namespace BLL
     // A02 - Reporte asociado al RFN1: "Reporte de Turnos de Reparación".
     // Es de solo lectura: no modifica datos. Arma el listado del período y calcula
     // los indicadores que sirven para planificar (ocupación, cancelaciones, demanda).
-    public class BLL_ReporteTurnos_96_PP : BLL_Taller_Comun_96_PP
+    public class BLL_ReporteTurnos_96_PP
     {
         private const int MaximoDiasPorReporte = 366;
 
@@ -105,6 +106,16 @@ namespace BLL
                           .OrderByDescending(g => g.Count()).ThenBy(g => g.Key)
                           .Select(g => $"{g.Key} ({g.Count()})")
                           .First();
+        }
+    
+
+        private void RegistrarEvento(string modulo, string descripcion, Evento_96_PP.Criticidad criticidad)
+        {
+            var usuario = SessionManager_96_PP.getInstancia().getUsuarioActivo();
+            string dni = usuario?.Dni ?? "Sistema";
+
+            new BLL_BitacoraEvento_96_PP().RegistrarEvento(
+                new Evento_96_PP(dni, DateTime.Now, modulo, descripcion, criticidad));
         }
     }
 }

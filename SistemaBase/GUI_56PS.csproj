@@ -112,6 +112,37 @@
     <Compile Include="Turnos\FormTurnos_96_PP.Designer.cs">
       <DependentUpon>FormTurnos_96_PP.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diagnostico\Ayuda_96_PP.cs" />
+    <Compile Include="Diagnostico\FormAsistencia_96_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostico\FormAsistencia_96_PP.Designer.cs">
+      <DependentUpon>FormAsistencia_96_PP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostico\FormRevision_96_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostico\FormRevision_96_PP.Designer.cs">
+      <DependentUpon>FormRevision_96_PP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostico\FormDiagnostico_96_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostico\FormDiagnostico_96_PP.Designer.cs">
+      <DependentUpon>FormDiagnostico_96_PP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostico\FormRegistroReparacion_96_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostico\FormRegistroReparacion_96_PP.Designer.cs">
+      <DependentUpon>FormRegistroReparacion_96_PP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diagnostico\FormCobro_96_PP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diagnostico\FormCobro_96_PP.Designer.cs">
+      <DependentUpon>FormCobro_96_PP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\FormReporteTurnos_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +156,7 @@
       <DependentUpon>MenuPrincipal_96_PP.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Tema_96_PP.cs" />
     <Compile Include="Usuario\FormCambiarContraseña_96_PP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +204,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Turnos\FormTurnos_96_PP.resx">
       <DependentUpon>FormTurnos_96_PP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostico\FormAsistencia_96_PP.resx">
+      <DependentUpon>FormAsistencia_96_PP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostico\FormRevision_96_PP.resx">
+      <DependentUpon>FormRevision_96_PP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostico\FormDiagnostico_96_PP.resx">
+      <DependentUpon>FormDiagnostico_96_PP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostico\FormRegistroReparacion_96_PP.resx">
+      <DependentUpon>FormRegistroReparacion_96_PP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diagnostico\FormCobro_96_PP.resx">
+      <DependentUpon>FormCobro_96_PP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\FormReporteTurnos_96_PP.resx">
       <DependentUpon>FormReporteTurnos_96_PP.cs</DependentUpon>
@@ -221,6 +268,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Script_TallerMecanico.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Script_Diagnostico.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

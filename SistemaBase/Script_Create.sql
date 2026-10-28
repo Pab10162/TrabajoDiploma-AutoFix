@@ -178,7 +178,6 @@ CREATE TABLE dbo.Vehiculo_56PS
     Patente      VARCHAR(7)    NOT NULL,
     Marca        NVARCHAR(50)  NOT NULL,
     Modelo       NVARCHAR(50)  NOT NULL,
-    Cedula       VARCHAR(30)   NOT NULL,
     DNI_Cliente  VARCHAR(8)    NOT NULL,
     Activo       BIT           NOT NULL CONSTRAINT DF_Vehiculo_56PS_Activo DEFAULT (1),
     CONSTRAINT PK_Vehiculo_56PS PRIMARY KEY (Patente),
@@ -358,14 +357,14 @@ BEGIN
         ('29555666', N'Héctor',    N'Benítez',   '1177889900', N'Gorriti 700, Banfield',                        0);   -- dado de baja
 
     /* ---------- Vehículos ---------- */
-    INSERT INTO dbo.Vehiculo_56PS (Patente, Marca, Modelo, Cedula, DNI_Cliente, Activo) VALUES
-        ('AB123CD', N'Volkswagen', N'Gol Trend',  'CED-0001', '40111222', 1),
-        ('AC456EF', N'Ford',       N'Ka',         'CED-0002', '40111222', 1),   -- Juan tiene 2 autos
-        ('AD789GH', N'Chevrolet',  N'Onix',       'CED-0003', '38222333', 1),
-        ('KLM123',  N'Renault',    N'Clio',       'CED-0004', '35333444', 1),   -- patente formato viejo
-        ('AE321JK', N'Toyota',     N'Etios',      'CED-0005', '42444555', 1),
-        ('NOP456',  N'Fiat',       N'Palio',      'CED-0006', '35333444', 0),   -- dado de baja
-        ('JKL789',  N'Peugeot',    N'206',        'CED-0007', '29555666', 1);   -- dueño dado de baja
+    INSERT INTO dbo.Vehiculo_56PS (Patente, Marca, Modelo, DNI_Cliente, Activo) VALUES
+        ('AB123CD', N'Volkswagen', N'Gol Trend',  '40111222', 1),
+        ('AC456EF', N'Ford',       N'Ka',         '40111222', 1),   -- Juan tiene 2 autos
+        ('AD789GH', N'Chevrolet',  N'Onix',       '38222333', 1),
+        ('KLM123',  N'Renault',    N'Clio',       '35333444', 1),   -- patente formato viejo
+        ('AE321JK', N'Toyota',     N'Etios',      '42444555', 1),
+        ('NOP456',  N'Fiat',       N'Palio',      '35333444', 0),   -- dado de baja
+        ('JKL789',  N'Peugeot',    N'206',        '29555666', 1);   -- dueño dado de baja
 
     /* ---------- Turnos (fechas relativas a hoy) ---------- */
     DECLARE @hoy DATE = CAST(GETDATE() AS DATE);

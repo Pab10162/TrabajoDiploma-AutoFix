@@ -23,11 +23,13 @@ namespace SistemaBase.Turnos
         private List<TimeSpan> horariosDisponibles = new List<TimeSpan>();
 
         private bool puedeAsignar;
+        private bool cargandoEstados;
         private bool puedeConsultar;
 
         public FormTurnos_96_PP()
         {
             InitializeComponent();
+            Tema_96_PP.Aplicar(this);
             SessionManager_96_PP.getInstancia().Suscribir(this);
             actualizarIdioma();
         }
@@ -36,6 +38,7 @@ namespace SistemaBase.Turnos
         {
             mensajes.Traducir(this);
             Text = mensajes.TraducirMensaje("Turnos");
+            CargarEstados();
             MostrarCliente();
         }
 
@@ -244,6 +247,36 @@ namespace SistemaBase.Turnos
             }
         }
 
+        // Filtro por estado del turno (-1 = todos). Se vuelve a cargar al cambiar de idioma.
+        private void CargarEstados()
+        {
+            object previo = cmbEstadoFiltro.SelectedValue;
+            cargandoEstados = true;
+
+            var estados = new List<KeyValuePair<int, string>>
+            {
+                new KeyValuePair<int, string>(-1, mensajes.TraducirMensaje("Todos los estados")),
+                new KeyValuePair<int, string>((int)BE_Turno_96_PP.EstadoTurno.Pendiente, mensajes.TraducirMensaje("Pendiente")),
+                new KeyValuePair<int, string>((int)BE_Turno_96_PP.EstadoTurno.Confirmado, mensajes.TraducirMensaje("Confirmado")),
+                new KeyValuePair<int, string>((int)BE_Turno_96_PP.EstadoTurno.Cancelado, mensajes.TraducirMensaje("Cancelado")),
+                new KeyValuePair<int, string>((int)BE_Turno_96_PP.EstadoTurno.Atendido, mensajes.TraducirMensaje("Atendido"))
+            };
+
+            cmbEstadoFiltro.DisplayMember = "Value";
+            cmbEstadoFiltro.ValueMember = "Key";
+            cmbEstadoFiltro.DataSource = estados;
+            if (previo is int)
+                cmbEstadoFiltro.SelectedValue = previo;
+
+            cargandoEstados = false;
+        }
+
+        private void cmbEstadoFiltro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!cargandoEstados)
+                CargarAgenda();
+        }
+
         private void dtpFiltro_ValueChanged(object sender, EventArgs e)
         {
             CargarAgenda();
@@ -265,9 +298,17 @@ namespace SistemaBase.Turnos
                 return;
             }
 
-            dgvTurnos.DataSource = chkTodasLasFechas.Checked
+            List<BE_Turno_96_PP> turnos = chkTodasLasFechas.Checked
                 ? bllTurno.ObtenerTodos()
                 : bllTurno.ObtenerPorFecha(dtpFiltro.Value.Date);
+
+            if (cmbEstadoFiltro.SelectedValue is int && (int)cmbEstadoFiltro.SelectedValue >= 0)
+            {
+                int estado = (int)cmbEstadoFiltro.SelectedValue;
+                turnos = turnos.Where(t => (int)t.Estado == estado).ToList();
+            }
+
+            dgvTurnos.DataSource = turnos;
 
             ActualizarBotonesAgenda();
         }
@@ -299,7 +340,8 @@ namespace SistemaBase.Turnos
             BE_Turno_96_PP turno = TurnoSeleccionado();
 
             btnConfirmarTurno.Enabled = puedeAsignar && turno != null &&
-                turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente;
+                turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente &&
+                turno.Fecha >= DateTime.Today;
 
             btnCancelarTurno.Enabled = puedeAsignar && turno != null &&
                 (turno.Estado == BE_Turno_96_PP.EstadoTurno.Pendiente ||
